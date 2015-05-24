@@ -12,9 +12,6 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
-/**
- * Created by Dell on 5/24/2015.
- */
 public class SalaryIncome extends AppCompatActivity {
     private Toolbar toolbar;
     @Override
@@ -46,6 +43,8 @@ public class SalaryIncome extends AppCompatActivity {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
+        //check
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
