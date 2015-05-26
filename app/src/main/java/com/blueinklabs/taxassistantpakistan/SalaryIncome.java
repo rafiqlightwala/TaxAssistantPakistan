@@ -6,14 +6,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ExpandableListView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import java.util.ArrayList;
+
 public class SalaryIncome extends AppCompatActivity {
     private Toolbar toolbar;
+    private ExpandListAdapter ExpAdapter;
+    private ArrayList<Group> ExpListItems;
+    private ExpandableListView ExpandList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +52,53 @@ public class SalaryIncome extends AppCompatActivity {
         mAdView.loadAd(adRequest);
 
         //check
+        //ExpandableList
+        ExpandList = (ExpandableListView) findViewById(R.id.exp_list);
+        ExpListItems = SetStandardGroups();
+        ExpAdapter = new ExpandListAdapter(SalaryIncome.this, ExpListItems);
+        ExpandList.setAdapter(ExpAdapter);
+
+
+
     }
+
+    public ArrayList<Group> SetStandardGroups() {
+        String group_names[] = {"GROUP A", "GROUP B"};
+
+        String country_names[] = {"Brazil", "Mexico", "Croatia", "Cameroon",
+                "Netherlands", "Chile", "United States", "United Kingdom"};
+
+        int Images[] = {R.mipmap.ic_launcher, R.mipmap.ic_launcher,
+                R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
+                R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+
+        ArrayList<Group> list = new ArrayList<Group>();
+
+        ArrayList<Child> ch_list;
+
+        int size = 4;
+        int j = 0;
+
+        for (String group_name : group_names) {
+            Group gru = new Group();
+            gru.setName(group_name);
+
+            ch_list = new ArrayList<Child>();
+            for (; j < size; j++) {
+                Child ch = new Child();
+                ch.setName(country_names[j]);
+                ch.setImage(Images[j]);
+                ch_list.add(ch);
+            }
+            gru.setItems(ch_list);
+            list.add(gru);
+
+            size = size + 4;
+        }
+
+        return list;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
