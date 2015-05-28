@@ -92,7 +92,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                     convertView = mInflater.inflate(R.layout.group_item, null);
                     holder.tv = (TextView) convertView.findViewById(R.id.group_name);
                     holder.tvPKR = (TextView) convertView.findViewById(R.id.group_PKR);
-
+                    holder.iv = (ImageView) convertView.findViewById(R.id.group_icon_item);
                     break;
                 case TYPE_ITEM_DISPLAY:
                     convertView = mInflater.inflate(R.layout.group_item_display, null);
@@ -108,6 +108,11 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             case TYPE_ITEM:
                 holder.tv.setText(group.getName());
                 holder.tvPKR.setText(group.getHeadingResult());
+                if (isExpanded) {
+                    holder.iv.setImageResource(R.drawable.up);
+                } else {
+                    holder.iv.setImageResource(R.drawable.down);
+                }
                 break;
             case TYPE_ITEM_DISPLAY:
                 holder.tvDisplay.setText(group.getName());
@@ -166,6 +171,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     public static class ViewHolder {
         public TextView tv;
         public TextView tvPKR;
+        public ImageView iv;
         public TextView tvDisplay;
         public TextView tvPKRDisplay;
     }

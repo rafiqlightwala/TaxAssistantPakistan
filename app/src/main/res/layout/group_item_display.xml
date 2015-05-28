@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:background="@color/ColorAccent"
     android:padding="4dp"
-
     >
 
     <TextView
@@ -16,7 +15,8 @@
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/ColorPrimaryDark" />
 
     <TextView
         android:id="@+id/group_PKR_display"
@@ -27,6 +27,7 @@
         android:text="TextView"
         android:layout_alignParentRight="true"
         android:paddingRight="12dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/ColorPrimaryDark" />
 
 </RelativeLayout>

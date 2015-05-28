@@ -55,7 +55,6 @@ public class SalaryIncome extends AppCompatActivity {
         //ExpandableList
         ExpandList = (ExpandableListView) findViewById(R.id.exp_list);
         ExpListItems = SetStandardGroups();
-        ExpandList.setGroupIndicator(getResources().getDrawable(R.drawable.expandable_list_icon_selector));
         ExpAdapter = new ExpandListAdapter(SalaryIncome.this, ExpListItems);
         ExpandList.setAdapter(ExpAdapter);
 
@@ -69,9 +68,9 @@ public class SalaryIncome extends AppCompatActivity {
         String country_names[] = {"United States of America Is The Worst Form Of This", "United States of America Is The Worst Form Of This", "Croatia", "Cameroon",
                 "Netherlands", "Brazil",};
 
-        int Images[] = {R.mipmap.ic_launcher, R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher};
+        int Images[] = {R.drawable.edit_icon, R.drawable.edit_icon,
+                R.drawable.edit_icon, R.drawable.edit_icon, R.drawable.edit_icon,
+                R.drawable.edit_icon};
 
         ArrayList<Group> list = new ArrayList<Group>();
 

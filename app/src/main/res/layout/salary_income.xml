@@ -41,7 +41,7 @@
             android:dividerHeight="5dp"
             android:divider="@android:color/transparent"
             android:childDivider="@android:color/transparent"
-            android:groupIndicator="@drawable/iconresource" />
+            android:groupIndicator="@android:color/transparent" />
 
 
     </RelativeLayout>
