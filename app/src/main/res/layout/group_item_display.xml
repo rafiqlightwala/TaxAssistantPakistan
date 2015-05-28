@@ -3,26 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/ColorGroupItemRegular"
-    android:padding="10dp">
+    android:background="@color/ColorAccent"
+    android:padding="4dp"
+
+    >
 
     <TextView
-        android:id="@+id/group_name"
+        android:id="@+id/group_name_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="25dp"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
-        android:textSize="18sp" />
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/group_PKR"
+        android:id="@+id/group_PKR_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:textSize="16sp"
         android:text="TextView"
         android:layout_alignParentRight="true"
-        android:paddingRight="2dp" />
+        android:paddingRight="12dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

@@ -12,12 +12,18 @@ import java.util.ArrayList;
 
 public class ExpandListAdapter extends BaseExpandableListAdapter {
 
+    private static final int TYPE_ITEM = 0;
+    private static final int TYPE_ITEM_DISPLAY = 1;
+    private static final int TYPE_MAX_COUNT = TYPE_ITEM_DISPLAY + 1;
+
     private Context context;
     private ArrayList<Group> groups;
+    private LayoutInflater mInflater;
 
     public ExpandListAdapter(Context context, ArrayList<Group> groups) {
         this.context = context;
         this.groups = groups;
+        mInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -36,16 +42,18 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         Child child = (Child) getChild(groupPosition, childPosition);
+
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) context
-                    .getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.child_item_standard, null);
+            convertView = mInflater.inflate(R.layout.child_item_standard, null);
         }
+
         TextView tv = (TextView) convertView.findViewById(R.id.country_name);
         ImageView iv = (ImageView) convertView.findViewById(R.id.flag);
+        TextView tvAmount = (TextView) convertView.findViewById(R.id.entered_amount);
 
         tv.setText(child.getName().toString());
         iv.setImageResource(child.getImage());
+        tvAmount.setText(child.getEnteredAmount());
 
         return convertView;
     }
@@ -75,13 +83,37 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         Group group = (Group) getGroup(groupPosition);
+        ViewHolder holder = null;
+        int typeGroup = getGroupType(groupPosition);
         if (convertView == null) {
-            LayoutInflater inf = (LayoutInflater) context
-                    .getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            convertView = inf.inflate(R.layout.group_item, null);
+            holder = new ViewHolder();
+            switch (typeGroup) {
+                case TYPE_ITEM:
+                    convertView = mInflater.inflate(R.layout.group_item, null);
+                    holder.tv = (TextView) convertView.findViewById(R.id.group_name);
+                    holder.tvPKR = (TextView) convertView.findViewById(R.id.group_PKR);
+
+                    break;
+                case TYPE_ITEM_DISPLAY:
+                    convertView = mInflater.inflate(R.layout.group_item_display, null);
+                    holder.tvDisplay = (TextView) convertView.findViewById(R.id.group_name_display);
+                    holder.tvPKRDisplay = (TextView) convertView.findViewById(R.id.group_PKR_display);
+                    break;
+            }
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
-        TextView tv = (TextView) convertView.findViewById(R.id.group_name);
-        tv.setText(group.getName());
+        switch (typeGroup) {
+            case TYPE_ITEM:
+                holder.tv.setText(group.getName());
+                holder.tvPKR.setText(group.getHeadingResult());
+                break;
+            case TYPE_ITEM_DISPLAY:
+                holder.tvDisplay.setText(group.getName());
+                holder.tvPKRDisplay.setText(group.getHeadingResult());
+                break;
+        }
         return convertView;
     }
 
@@ -93,6 +125,49 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
+    }
+
+    /*
+    @Override
+    public int getChildType(int groupPosition, int childPosition){
+
+    }
+
+    public int getChildTypeCount(){
+
+    }
+    */
+    @Override
+    public int getGroupType(int groupPosition) {
+        switch (groupPosition) {
+            case 0:
+                return TYPE_ITEM;
+            case 1:
+                return TYPE_ITEM;
+            case 2:
+                return TYPE_ITEM_DISPLAY;
+            case 3:
+                return TYPE_ITEM_DISPLAY;
+            case 4:
+                return TYPE_ITEM;
+            case 5:
+                return TYPE_ITEM_DISPLAY;
+            default:
+                break;
+        }
+        return TYPE_ITEM;
+    }
+
+    @Override
+    public int getGroupTypeCount() {
+        return TYPE_MAX_COUNT;
+    }
+
+    public static class ViewHolder {
+        public TextView tv;
+        public TextView tvPKR;
+        public TextView tvDisplay;
+        public TextView tvPKRDisplay;
     }
 
 }

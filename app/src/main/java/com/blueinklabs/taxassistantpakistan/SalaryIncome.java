@@ -55,6 +55,7 @@ public class SalaryIncome extends AppCompatActivity {
         //ExpandableList
         ExpandList = (ExpandableListView) findViewById(R.id.exp_list);
         ExpListItems = SetStandardGroups();
+        ExpandList.setGroupIndicator(getResources().getDrawable(R.drawable.expandable_list_icon_selector));
         ExpAdapter = new ExpandListAdapter(SalaryIncome.this, ExpListItems);
         ExpandList.setAdapter(ExpAdapter);
 
@@ -63,10 +64,10 @@ public class SalaryIncome extends AppCompatActivity {
     }
 
     public ArrayList<Group> SetStandardGroups() {
-        String group_names[] = {"TOTAL INCOME", "EXEMPTIONS", "TAXABLE INCOME", "GROSS TAX", "ADJUSTMENTS", "NET TAX"};
+        String group_names[] = {"TOTAL INCOME", "EXEMPTIONS", "= TAXABLE INCOME", "= GROSS TAX", "ADJUSTMENTS", "= NET TAX"};
 
-        String country_names[] = {"Brazil", "Mexico", "Croatia", "Cameroon",
-                "Netherlands", "United States of America Is The Worst Form Of This",};
+        String country_names[] = {"United States of America Is The Worst Form Of This", "United States of America Is The Worst Form Of This", "Croatia", "Cameroon",
+                "Netherlands", "Brazil",};
 
         int Images[] = {R.mipmap.ic_launcher, R.mipmap.ic_launcher,
                 R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
@@ -76,25 +77,36 @@ public class SalaryIncome extends AppCompatActivity {
 
         ArrayList<Child> ch_list;
 
-        int size = 1;
-        int j = 0;
-
         for (String group_name : group_names) {
             Group gru = new Group();
             gru.setName(group_name);
 
             ch_list = new ArrayList<Child>();
-            for (; j < size; j++) {
+
+            if (group_name == "TOTAL INCOME" || group_name == "EXEMPTIONS" || group_name == "ADJUSTMENTS") {
                 Child ch = new Child();
-                ch.setName(country_names[j]);
-                ch.setImage(Images[j]);
+                ch.setName(country_names[1]);
+                ch.setImage(Images[1]);
                 ch_list.add(ch);
+                Child ch1 = new Child();
+                ch1.setName(country_names[2]);
+                ch1.setImage(Images[2]);
+                ch_list.add(ch1);
             }
             gru.setItems(ch_list);
             list.add(gru);
-
-            size = size + 1;
         }
+
+        /*
+        ch_list = new ArrayList<Child>();
+        for (; j < size; j++) {
+            Child ch = new Child();
+            ch.setName(country_names[j]);
+            ch.setImage(Images[j]);
+            ch_list.add(ch);
+        }
+        gru.setItems(ch_list);
+        */
 
         return list;
     }
