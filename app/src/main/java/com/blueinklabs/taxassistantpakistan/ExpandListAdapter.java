@@ -39,7 +39,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
                     .getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.child_item, null);
+            convertView = infalInflater.inflate(R.layout.child_item_standard, null);
         }
         TextView tv = (TextView) convertView.findViewById(R.id.country_name);
         ImageView iv = (ImageView) convertView.findViewById(R.id.flag);

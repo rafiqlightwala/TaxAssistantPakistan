@@ -63,20 +63,20 @@ public class SalaryIncome extends AppCompatActivity {
     }
 
     public ArrayList<Group> SetStandardGroups() {
-        String group_names[] = {"GROUP A", "GROUP B"};
+        String group_names[] = {"TOTAL INCOME", "EXEMPTIONS", "TAXABLE INCOME", "GROSS TAX", "ADJUSTMENTS", "NET TAX"};
 
         String country_names[] = {"Brazil", "Mexico", "Croatia", "Cameroon",
-                "Netherlands", "Chile", "United States", "United Kingdom"};
+                "Netherlands", "United States of America Is The Worst Form Of This",};
 
         int Images[] = {R.mipmap.ic_launcher, R.mipmap.ic_launcher,
                 R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher,
-                R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+                R.mipmap.ic_launcher};
 
         ArrayList<Group> list = new ArrayList<Group>();
 
         ArrayList<Child> ch_list;
 
-        int size = 4;
+        int size = 1;
         int j = 0;
 
         for (String group_name : group_names) {
@@ -93,7 +93,7 @@ public class SalaryIncome extends AppCompatActivity {
             gru.setItems(ch_list);
             list.add(gru);
 
-            size = size + 4;
+            size = size + 1;
         }
 
         return list;
