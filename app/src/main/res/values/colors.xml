@@ -4,8 +4,12 @@
     <color name="ColorPrimaryDark">#D32F2F</color>
     <color name="ColorAccent">#FFEB3B</color>
     <color name="ColorWhite">#ffffffff</color>
-    <color name="ColorGroupItemRegular">#ffdddddd</color>
-    <color name="ColorChildItemRegular">#ffebebeb</color>
+
+    <color name="ColorChildItemRegular">#ffe6e6e6</color>
+    <color name="textGray">#ff808080</color>
+    <color name="ColorGroupItemRegular1">#ffdddddd</color>
+    <color name="ColorGroupItemRegular">#ffffed7d</color>
+    <color name="ColorGroupItemResult">#ffeb3b</color>
 
 
 </resources>

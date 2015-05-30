@@ -63,9 +63,9 @@ public class SalaryIncome extends AppCompatActivity {
     }
 
     public ArrayList<Group> SetStandardGroups() {
-        String group_names[] = {"TOTAL INCOME", "EXEMPTIONS", "= TAXABLE INCOME", "= GROSS TAX", "ADJUSTMENTS", "= NET TAX"};
+        String group_names[] = {"TOTAL INCOME", "EXEMPTIONS", "TAXABLE INCOME", "GROSS TAX", "ADJUSTMENTS", "NET TAX"};
 
-        String country_names[] = {"United States of America Is The Worst Form Of This", "United States of America Is The Worst Form Of This", "Croatia", "Cameroon",
+        String country_names[] = {"SALARY INCOME", "SALARY INCOME", "OTHER ALLOWANCES AS THEY ARE RECEIVED ARE ENTERED", "Cameroon",
                 "Netherlands", "Brazil",};
 
         int Images[] = {R.drawable.edit_icon, R.drawable.edit_icon,

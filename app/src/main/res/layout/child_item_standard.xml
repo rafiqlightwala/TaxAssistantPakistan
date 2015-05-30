@@ -21,10 +21,12 @@
         android:layout_marginLeft="6dp"
         android:layout_weight="7"
         android:text="TextView"
-        android:textSize="15sp"
+        android:textSize="14sp"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/textGray"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/entered_amount"
@@ -36,7 +38,9 @@
         android:paddingLeft="2dp"
         android:paddingRight="12dp"
         android:layout_gravity="center_vertical"
-        android:gravity="right" />
+        android:gravity="right"
+        android:textColor="@color/textGray"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

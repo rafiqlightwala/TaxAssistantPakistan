@@ -3,20 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/ColorAccent"
-    android:padding="4dp"
+    android:background="@color/ColorGroupItemResult"
+    android:padding="6dp"
     >
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/group_icon_item_display"
+        android:layout_centerVertical="true"
+        android:padding="2dp"
+        android:src="@drawable/equals" />
     <TextView
         android:id="@+id/group_name_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/ColorPrimaryDark" />
+        android:textColor="@color/ColorPrimaryDark"
+        android:layout_centerVertical="true"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/group_PKR_display"
@@ -26,8 +34,7 @@
         android:textSize="16sp"
         android:text="TextView"
         android:layout_alignParentRight="true"
-        android:paddingRight="12dp"
-        android:textStyle="bold"
-        android:textColor="@color/ColorPrimaryDark" />
-
+        android:paddingRight="2dp"
+        android:textColor="@color/ColorPrimaryDark"
+        android:textStyle="bold" />
 </RelativeLayout>
