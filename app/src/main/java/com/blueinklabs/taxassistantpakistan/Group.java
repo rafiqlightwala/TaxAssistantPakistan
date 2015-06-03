@@ -14,8 +14,15 @@ public class Group {
     }
 
     public String getHeadingResult() {
+        if (headingResult < 0) {
+            DecimalFormat formatter = new DecimalFormat("#,###");
+            formatter.setNegativePrefix("(");
+            formatter.setNegativeSuffix(")");
+            return "PKR " + formatter.format(headingResult);
+        }
         DecimalFormat formatter = new DecimalFormat("#,###");
         return "PKR " + formatter.format(headingResult);
+
     }
 
     public void setHeadingResult(double hResult) {

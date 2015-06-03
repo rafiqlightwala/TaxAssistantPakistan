@@ -6,9 +6,9 @@
     <color name="ColorWhite">#ffffffff</color>
 
     <color name="ColorChildItemRegular">#ffe6e6e6</color>
-    <color name="textGray">#ff808080</color>
-    <color name="ColorGroupItemRegular1">#ffdddddd</color>
-    <color name="ColorGroupItemRegular">#ffffed7d</color>
+    <color name="textGray">#ff727272</color>
+    <color name="ColorGroupItemRegular1">#ffebebeb</color>
+    <color name="ColorGroupItemRegular">#ffffeb3b</color>
     <color name="ColorGroupItemResult">#ffeb3b</color>
 
 

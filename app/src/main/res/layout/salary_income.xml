@@ -10,7 +10,7 @@
         layout="@layout/tool_bar" />
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="50dp"
+        android:paddingBottom="60dp"
         android:paddingTop="10dp"
         android:id="@+id/salary_page_container"
         android:paddingRight="8dp"
@@ -38,9 +38,9 @@
             android:layout_height="wrap_content"
             android:headerDividersEnabled="false"
             android:clickable="false"
-            android:dividerHeight="5dp"
+            android:dividerHeight="2dp"
             android:divider="@android:color/transparent"
-            android:childDivider="@android:color/transparent"
+            android:childDivider="@color/ColorGroupItemRegular1"
             android:groupIndicator="@android:color/transparent" />
 
 
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        ads:adSize="SMART_BANNER"
+        ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id">
     </com.google.android.gms.ads.AdView>
 

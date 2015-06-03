@@ -150,13 +150,13 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             case 1:
                 return TYPE_ITEM;
             case 2:
-                return TYPE_ITEM_DISPLAY;
+                return TYPE_ITEM;
             case 3:
-                return TYPE_ITEM_DISPLAY;
+                return TYPE_ITEM;
             case 4:
                 return TYPE_ITEM;
             case 5:
-                return TYPE_ITEM_DISPLAY;
+                return TYPE_ITEM;
             default:
                 break;
         }

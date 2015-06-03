@@ -42,7 +42,6 @@ public class SalaryIncome extends AppCompatActivity {
         t.send(new HitBuilders.ScreenViewBuilder().build());
 
 
-
         //Ads
         AdView mAdView = (AdView) findViewById(R.id.adView_salarypage);
         AdRequest adRequest = new AdRequest.Builder()
@@ -59,38 +58,58 @@ public class SalaryIncome extends AppCompatActivity {
         ExpandList.setAdapter(ExpAdapter);
 
 
-
     }
 
     public ArrayList<Group> SetStandardGroups() {
-        String group_names[] = {"TOTAL INCOME", "EXEMPTIONS", "TAXABLE INCOME", "GROSS TAX", "ADJUSTMENTS", "NET TAX"};
+        String group_names[] = {"INCOME FROM SALARY", "INCOME FROM PROPERTY", "DEDUCTIBLE ALLOWANCES", "TAX REDUCTIONS", "OTHER INCOMES", "ADVANCE OR PAID TAX"};
 
         String country_names[] = {"SALARY INCOME", "SALARY INCOME", "OTHER ALLOWANCES AS THEY ARE RECEIVED ARE ENTERED", "Cameroon",
                 "Netherlands", "Brazil",};
 
-        int Images[] = {R.drawable.edit_icon, R.drawable.edit_icon,
-                R.drawable.edit_icon, R.drawable.edit_icon, R.drawable.edit_icon,
-                R.drawable.edit_icon};
-
+        int Images[] = {R.drawable.edit_icon};
         ArrayList<Group> list = new ArrayList<Group>();
-
         ArrayList<Child> ch_list;
 
         for (String group_name : group_names) {
             Group gru = new Group();
             gru.setName(group_name);
-
             ch_list = new ArrayList<Child>();
 
-            if (group_name == "TOTAL INCOME" || group_name == "EXEMPTIONS" || group_name == "ADJUSTMENTS") {
-                Child ch = new Child();
-                ch.setName(country_names[1]);
-                ch.setImage(Images[1]);
-                ch_list.add(ch);
-                Child ch1 = new Child();
-                ch1.setName(country_names[2]);
-                ch1.setImage(Images[2]);
-                ch_list.add(ch1);
+            switch (group_name) {
+                case "INCOME FROM SALARY":
+                    Child child1 = new Child();
+                    child1.setName("PAY, WAGES & REMUNERATION");
+                    ch_list.add(child1);
+                    Child child2 = new Child();
+                    child2.setName("MEDICAL ALLOWANCE");
+                    ch_list.add(child2);
+                    Child child3 = new Child();
+                    child3.setName("OTHER ALLOWANCES");
+                    ch_list.add(child3);
+                    Child child4 = new Child();
+                    child4.setName("FUEL & OTHER REIMBURSEMENTS");
+                    ch_list.add(child4);
+                    Child child5 = new Child();
+                    child5.setName("EMPLOYMENT RELATED PROFITS");
+                    ch_list.add(child5);
+                    break;
+                case "INCOME FROM PROPERTY":
+
+                    break;
+                case "DEDUCTIBLE ALLOWANCES":
+
+                    break;
+                case "TAX REDUCTIONS":
+
+                    break;
+                case "OTHER INCOMES":
+
+                    break;
+                case "ADVANCE OR PAID TAX":
+
+                    break;
+                default:
+                    break;
             }
             gru.setItems(ch_list);
             list.add(gru);

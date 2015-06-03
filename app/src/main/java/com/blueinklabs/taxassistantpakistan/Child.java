@@ -11,9 +11,16 @@ public class Child {
 
     public Child() {
         enteredAmount = 0;
+        this.Image = R.drawable.edit_icon;
     }
 
     public String getEnteredAmount() {
+        if (enteredAmount < 0) {
+            DecimalFormat formatter = new DecimalFormat("#,###");
+            formatter.setNegativePrefix("(");
+            formatter.setNegativeSuffix(")");
+            return "PKR " + formatter.format(enteredAmount);
+        }
         DecimalFormat formatter = new DecimalFormat("#,###");
         return "PKR " + formatter.format(enteredAmount);
     }
