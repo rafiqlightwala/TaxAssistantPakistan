@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/tool_bar"
-        layout="@layout/tool_bar"></include>
+        layout="@layout/tool_bar" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_below="@+id/main_page_text"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:adjustViewBounds="true"
-            android:background="@color/ColorAccent"
+            android:background="@color/ColorAccent1"
             android:elevation="2dp"
             android:src="@drawable/salaried_option"
             android:translationZ="2dp"
@@ -54,7 +54,7 @@
             android:layout_below="@+id/imageView"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:adjustViewBounds="true"
-            android:background="@color/ColorAccent"
+            android:background="@color/ColorAccent1"
             android:clickable="true"
             android:elevation="2dp"
             android:src="@drawable/other_option"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView2"
             android:clickable="true"
-            android:background="@color/ColorAccent"
+            android:background="@color/ColorAccent1"
             android:src="@drawable/business_option"
             android:adjustViewBounds="true"
             android:elevation="2dp"

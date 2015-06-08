@@ -47,13 +47,13 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             convertView = mInflater.inflate(R.layout.child_item_standard, null);
         }
 
-        TextView tv = (TextView) convertView.findViewById(R.id.country_name);
-        ImageView iv = (ImageView) convertView.findViewById(R.id.flag);
-        TextView tvAmount = (TextView) convertView.findViewById(R.id.entered_amount);
+        TextView tv = (TextView) convertView.findViewById(R.id.item_detail);
+        //ImageView iv = (ImageView) convertView.findViewById(R.id.flag);
+        TextView tvAmount = (TextView) convertView.findViewById(R.id.display_amount);
 
-        tv.setText(child.getName().toString());
-        iv.setImageResource(child.getImage());
-        tvAmount.setText(child.getEnteredAmount());
+        tv.setText(child.getName());
+        //iv.setImageResource(child.getImage());
+        tvAmount.setText(child.getDisplayAmount());
 
         return convertView;
     }
@@ -83,7 +83,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         Group group = (Group) getGroup(groupPosition);
-        ViewHolder holder = null;
+        ViewHolder holder;
         int typeGroup = getGroupType(groupPosition);
         if (convertView == null) {
             holder = new ViewHolder();
@@ -91,13 +91,11 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                 case TYPE_ITEM:
                     convertView = mInflater.inflate(R.layout.group_item, null);
                     holder.tv = (TextView) convertView.findViewById(R.id.group_name);
-                    holder.tvPKR = (TextView) convertView.findViewById(R.id.group_PKR);
                     holder.iv = (ImageView) convertView.findViewById(R.id.group_icon_item);
                     break;
                 case TYPE_ITEM_DISPLAY:
                     convertView = mInflater.inflate(R.layout.group_item_display, null);
                     holder.tvDisplay = (TextView) convertView.findViewById(R.id.group_name_display);
-                    holder.tvPKRDisplay = (TextView) convertView.findViewById(R.id.group_PKR_display);
                     break;
             }
             convertView.setTag(holder);
@@ -107,7 +105,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         switch (typeGroup) {
             case TYPE_ITEM:
                 holder.tv.setText(group.getName());
-                holder.tvPKR.setText(group.getHeadingResult());
                 if (isExpanded) {
                     holder.iv.setImageResource(R.drawable.up);
                 } else {
@@ -116,7 +113,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                 break;
             case TYPE_ITEM_DISPLAY:
                 holder.tvDisplay.setText(group.getName());
-                holder.tvPKRDisplay.setText(group.getHeadingResult());
                 break;
         }
         return convertView;
@@ -170,7 +166,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
 
     public static class ViewHolder {
         public TextView tv;
-        public TextView tvPKR;
         public ImageView iv;
         public TextView tvDisplay;
         public TextView tvPKRDisplay;

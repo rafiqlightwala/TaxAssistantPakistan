@@ -25,16 +25,5 @@
         android:textStyle="bold"
         android:layout_centerVertical="true" />
 
-    <TextView
-        android:id="@+id/group_PKR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:textSize="16sp"
-        android:text="TextView"
-        android:layout_alignParentRight="true"
-        android:paddingRight="2dp"
-        android:textStyle="bold"
-        android:textColor="@color/ColorPrimaryDark" />
 
 </RelativeLayout>
