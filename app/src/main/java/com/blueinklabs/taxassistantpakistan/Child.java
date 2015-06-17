@@ -3,17 +3,20 @@ package com.blueinklabs.taxassistantpakistan;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Child {
 
     private String Name;
     private int Image;
     private Double displayAmount;
-    private ArrayList<Double> childComponents;
+    private List<Double> childComponents;
+    private List<Boolean> childPeriod;
 
     public Child() {
         displayAmount = (double) 0;
         childComponents = new ArrayList<Double>();
+        childPeriod = new ArrayList<Boolean>();
         //this.Image = R.drawable.edit_icon;
     }
 
@@ -24,16 +27,44 @@ public class Child {
         }
     }
 
-    public int getChildSize() {
+    public int getChildPeriodSize() {
+        return childPeriod.size();
+    }
+
+    public int getChildComponentSize() {
         return childComponents.size();
     }
 
     public void addChildComponent(int index, Double cComponent) {
-        childComponents.add(index, cComponent);
+        if (getChildComponentSize() <= index) {
+            childComponents.add(cComponent);
+        } else {
+            childComponents.set(index, cComponent);
+        }
     }
 
     public Double getChildComponent(int index) {
-        return childComponents.get(index);
+        if (getChildComponentSize() > index)
+            return childComponents.get(index);
+        else
+            return Double.valueOf(0);
+
+    }
+
+    public void addChildPeriod(int index, Boolean cPeriod) {
+        if (getChildPeriodSize() <= index) {
+            childPeriod.add(cPeriod);
+        } else {
+            childPeriod.set(index, cPeriod);
+        }
+    }
+
+    public Boolean getChildPeriod(int index) {
+        if (childPeriod.size() > 0) {
+            return childPeriod.get(index);
+        } else {
+            return Boolean.FALSE;
+        }
     }
 
     public Double getComponentsSum() {
@@ -59,8 +90,12 @@ public class Child {
         }
     }
 
-    public void setDisplayAmount(double eAmount) {
-        this.displayAmount = eAmount;
+    public void setDisplayAmount() {
+        Double tempDouble = Double.valueOf(0);
+        for (int i = 0; i < getChildComponentSize(); i++) {
+            tempDouble = tempDouble + childComponents.get(i);
+        }
+        this.displayAmount = tempDouble;
     }
 
     public String getName() {

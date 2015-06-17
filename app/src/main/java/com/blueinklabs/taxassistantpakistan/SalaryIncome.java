@@ -2,13 +2,15 @@ package com.blueinklabs.taxassistantpakistan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -28,7 +30,7 @@ public class SalaryIncome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Tell the activity which XML layout is right
-        setContentView(R.layout.salary_income);
+        setContentView(R.layout.main_expandlist_view);
         toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
         setSupportActionBar(toolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
         // Enable the "Up" button for more navigation options
@@ -61,17 +63,18 @@ public class SalaryIncome extends AppCompatActivity {
         ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                switch (groupPosition) {
+                /*switch (groupPosition) {
                     case 0:
                         switch (childPosition) {
                             case (0):
                                 Bundle args = new Bundle();
                                 args.putInt("gPosition", groupPosition);
                                 args.putInt("cPosition", childPosition);
-
                                 InputDialogFragment newFragment = new InputDialogFragment();
                                 newFragment.setArguments(args);
-                                newFragment.show(getFragmentManager(), "newtag");
+                                if (getFragmentManager().findFragmentByTag("newtag") == null) {
+                                    newFragment.show(getFragmentManager(), "newtag");
+                                }
                                 break;
                             case (1):
                                 Toast.makeText(getApplicationContext(), "Group " + groupPosition + " Child: " + childPosition, Toast.LENGTH_SHORT).show();
@@ -183,6 +186,14 @@ public class SalaryIncome extends AppCompatActivity {
                                 break;
                         }
                         break;
+                }*/
+                Bundle args = new Bundle();
+                args.putInt("gPosition", groupPosition);
+                args.putInt("cPosition", childPosition);
+                InputDialogFragment newFragment = new InputDialogFragment();
+                newFragment.setArguments(args);
+                if (getFragmentManager().findFragmentByTag("newtag") == null) {
+                    newFragment.show(getFragmentManager(), "newtag");
                 }
                 return false;
             }
@@ -214,9 +225,6 @@ public class SalaryIncome extends AppCompatActivity {
                     child4 = new Child();
                     child4.setName("EXPENDITURE REIMBURSEMENTS");
                     ch_list.add(child4);
-                    child5 = new Child();
-                    child5.setName("EMPLOYMENT RELATED PROFITS");
-                    ch_list.add(child5);
                     break;
                 case "INCOME FROM PROPERTY":
                     child1 = new Child();
@@ -274,9 +282,6 @@ public class SalaryIncome extends AppCompatActivity {
                     child8 = new Child();
                     child8.setName("ADVANCE TAX ON MOBILE OR PHONE BILLS");
                     ch_list.add(child8);
-                    child5 = new Child();
-                    child5.setName("ADVANCE TAX ON EDUCATIONAL FEE");
-                    ch_list.add(child5);
                     child2 = new Child();
                     child2.setName("ADVANCE TAX ON CASH WITHDRAWAL FROM BANK");
                     ch_list.add(child2);
@@ -356,5 +361,20 @@ public class SalaryIncome extends AppCompatActivity {
         return (Child) ExpAdapter.getChild(grPosition, chPosition);
     }
 
+    public ExpandListAdapter getExpAdapter() {
+        return ExpAdapter;
+    }
 
+    public static void addFragmentOnlyOnce(FragmentManager fragmentManager, Fragment fragment, String tag) {
+        // Make sure the current transaction finishes first
+        fragmentManager.executePendingTransactions();
+
+        // If there is no fragment yet with this tag...
+        if (fragmentManager.findFragmentByTag(tag) == null) {
+            // Add it
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.add(fragment, tag);
+            transaction.commit();
+        }
+    }
 }

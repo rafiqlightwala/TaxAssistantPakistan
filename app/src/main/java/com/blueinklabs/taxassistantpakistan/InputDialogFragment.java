@@ -3,13 +3,18 @@ package com.blueinklabs.taxassistantpakistan;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputDialogFragment extends DialogFragment {
     private Child ch1;
@@ -32,25 +37,27 @@ public class InputDialogFragment extends DialogFragment {
         // Pass null as the parent view because its going in the dialog layout
         insideFragView = inflater.inflate(getLayoutInt(), null);
         ((TextView) insideFragView.findViewById(R.id.headerview)).setText(ch1.getName());
-        insideFragView = editLayout(insideFragView);
+        insideFragView = editLayout();
         builder.setView(insideFragView)
                 //.setTitle(ch1.getName())
                 // Add action buttons
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        TextView doubleone = (TextView) insideFragView.findViewById(R.id.input1);
-                        Double passdouble = Double.parseDouble(doubleone.getText().toString());
-                        ch1.setDisplayAmount(passdouble);
+                        setPositiveStep();
+                        //Toast.makeText(getActivity(), Integer.toString(ch1.getChildSize()), Toast.LENGTH_SHORT).show();
+                        ((SalaryIncome) getActivity()).getExpAdapter().notifyDataSetChanged();
+                        dialog.dismiss();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
+                        dialog.cancel();
                     }
                 });
         return builder.create();
     }
+
 
     private int getLayoutInt() {
         switch (gPosition) {
@@ -58,24 +65,411 @@ public class InputDialogFragment extends DialogFragment {
                 switch (cPosition) {
                     case 0:
                         return R.layout.salary_pay_wages;
+                    case 1:
+                        return R.layout.medical_allowance;
+                    case 2:
+                        return R.layout.other_allowances;
+                    case 3:
+                        return R.layout.expenditure_reimbursements;
                 }
                 break;
+            case 1:
+                switch (cPosition) {
+                    case 0:
+                        return R.layout.rental_income;
+                    case 1:
+                        return R.layout.rent_expenses;
+                }
+                break;
+            case 2:
+                switch (cPosition) {
+                    case 0:
+                        return R.layout.capital_gains_securities;
+                    case 1:
+                        return R.layout.capital_gains_immovable;
+                }
+                break;
+            case 3:
+                switch (cPosition) {
+                    case 0:
+                        return R.layout.dividend;
+                    case 1:
+                        return R.layout.profit_on_debt;
+                    case 2:
+                        return R.layout.prize_bonds;
+                    case 3:
+                        return R.layout.bonus_shares;
+
+                }
+                break;
+            case 4:
+                switch (cPosition) {
+                    case 0:
+                        return R.layout.zakat;
+                    case 1:
+                        return R.layout.donations;
+                }
+                break;
+            case 5:
+                switch (cPosition) {
+                    case 0:
+                        return R.layout.new_shares;
+                    case 1:
+                        return R.layout.pension_funds;
+                    case 2:
+                        return R.layout.teacher;
+                }
+                break;
+            case 6:
+                return R.layout.generic_one_layout;
         }
         return 0;
     }
 
-    private View editLayout(View inputView) {
-        Spinner spinner1 = (Spinner) inputView.findViewById(R.id.dropdown1);
-        Spinner spinner2 = (Spinner) inputView.findViewById(R.id.dropdown2);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.salary_period, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner1.setAdapter(adapter);
-        spinner2.setAdapter(adapter);
+    private View editLayout() {
+        List<Spinner> spinList;
+        List<EditText> editList;
+        List<TextView> textList;
+        ArrayAdapter<CharSequence> adapterSpin;
+        int[] spinnerID;
+        int[] inputID;
+        switch (gPosition) {
+            case 0:
+                switch (cPosition) {
+                    case 0:
+                        spinList = new ArrayList<Spinner>();
+                        editList = new ArrayList<EditText>();
+                        adapterSpin = ArrayAdapter.createFromResource(getActivity(),
+                                R.array.salary_period, android.R.layout.simple_spinner_item);
+                        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerID = new int[]{R.id.dropdown1, R.id.dropdown2, R.id.dropdown3, R.id.dropdown4};
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3, R.id.input4};
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            spinList.add((Spinner) insideFragView.findViewById(spinnerID[i]));
+                            spinList.get(i).setAdapter(adapterSpin);
+                            if (ch1.getChildPeriod(i)) {
+                                spinList.get(i).setSelection(1);
+                            } else {
+                                spinList.get(i).setSelection(0);
+                            }
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    case 1:
+                        spinList = new ArrayList<Spinner>();
+                        editList = new ArrayList<EditText>();
+                        adapterSpin = ArrayAdapter.createFromResource(getActivity(),
+                                R.array.salary_period, android.R.layout.simple_spinner_item);
+                        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerID = new int[]{R.id.dropdown1};
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            spinList.add((Spinner) insideFragView.findViewById(spinnerID[i]));
+                            spinList.get(i).setAdapter(adapterSpin);
+                            if (ch1.getChildPeriod(i)) {
+                                spinList.get(i).setSelection(1);
+                            } else {
+                                spinList.get(i).setSelection(0);
+                            }
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    case 2:
+                        spinList = new ArrayList<Spinner>();
+                        editList = new ArrayList<EditText>();
+                        adapterSpin = ArrayAdapter.createFromResource(getActivity(),
+                                R.array.salary_period, android.R.layout.simple_spinner_item);
+                        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerID = new int[]{R.id.dropdown1, R.id.dropdown2, R.id.dropdown3, R.id.dropdown4, R.id.dropdown5};
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3, R.id.input4, R.id.input5};
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            spinList.add((Spinner) insideFragView.findViewById(spinnerID[i]));
+                            spinList.get(i).setAdapter(adapterSpin);
+                            if (ch1.getChildPeriod(i)) {
+                                spinList.get(i).setSelection(1);
+                            } else {
+                                spinList.get(i).setSelection(0);
+                            }
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    case 3:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3, R.id.input4};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                }
+                break;
+            case 1:
+                switch (cPosition) {
+                    case 0:
+                        spinList = new ArrayList<Spinner>();
+                        editList = new ArrayList<EditText>();
+                        adapterSpin = ArrayAdapter.createFromResource(getActivity(),
+                                R.array.salary_period, android.R.layout.simple_spinner_item);
+                        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerID = new int[]{R.id.dropdown1};
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            spinList.add((Spinner) insideFragView.findViewById(spinnerID[i]));
+                            spinList.get(i).setAdapter(adapterSpin);
+                            if (ch1.getChildPeriod(i)) {
+                                spinList.get(i).setSelection(1);
+                            } else {
+                                spinList.get(i).setSelection(0);
+                            }
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    case 1:
+                        spinList = new ArrayList<Spinner>();
+                        editList = new ArrayList<EditText>();
+                        adapterSpin = ArrayAdapter.createFromResource(getActivity(),
+                                R.array.salary_period, android.R.layout.simple_spinner_item);
+                        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerID = new int[]{R.id.dropdown1, R.id.dropdown2, R.id.dropdown3, R.id.dropdown4};
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3, R.id.input4};
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            spinList.add((Spinner) insideFragView.findViewById(spinnerID[i]));
+                            spinList.get(i).setAdapter(adapterSpin);
+                            if (ch1.getChildPeriod(i)) {
+                                spinList.get(i).setSelection(1);
+                            } else {
+                                spinList.get(i).setSelection(0);
+                            }
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                }
+                break;
+        }
+        return insideFragView;
+    }
 
-        return inputView;
+    private String convertToStr(Double inpDoub, Boolean inpBool) {
+        if (inpDoub.equals(Double.valueOf(0))) {
+            return "";
+        } else {
+            if (inpBool) {
+                inpDoub = inpDoub / 12;
+
+                return Integer.toString(inpDoub.intValue());
+            }
+            return Integer.toString(inpDoub.intValue());
+        }
+    }
+
+    private void setPositiveStep() {
+        Double finaldoublesum = Double.valueOf(0);
+        List<EditText> inputTextNum = new ArrayList<EditText>();
+        List<Spinner> periodSelect = new ArrayList<Spinner>();
+        int[] inputID;
+        int[] spinnerID;
+
+        switch (gPosition) {
+            case 0:
+                switch (cPosition) {
+                    case 0:
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3, R.id.input4};
+                        spinnerID = new int[]{R.id.dropdown1, R.id.dropdown2, R.id.dropdown3, R.id.dropdown4};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                            Spinner spinTemp = (Spinner) insideFragView.findViewById(spinnerID[i]);
+                            periodSelect.add(spinTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            Boolean tempBool;
+                            if (periodSelect.get(i).getSelectedItem().toString().equals("Monthly")) {
+                                ch1.addChildPeriod(i, Boolean.TRUE);
+                                tempBool = Boolean.TRUE;
+                            } else {
+                                ch1.addChildPeriod(i, Boolean.FALSE);
+                                tempBool = Boolean.FALSE;
+                            }
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                if (tempBool) {
+                                    tempDoub = tempDoub * 12;
+                                }
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    case 1:
+                        inputID = new int[]{R.id.input1};
+                        spinnerID = new int[]{R.id.dropdown1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                            Spinner spinTemp = (Spinner) insideFragView.findViewById(spinnerID[i]);
+                            periodSelect.add(spinTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            Boolean tempBool;
+                            if (periodSelect.get(i).getSelectedItem().toString().equals("Monthly")) {
+                                ch1.addChildPeriod(i, Boolean.TRUE);
+                                tempBool = Boolean.TRUE;
+                            } else {
+                                ch1.addChildPeriod(i, Boolean.FALSE);
+                                tempBool = Boolean.FALSE;
+                            }
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                if (tempBool) {
+                                    tempDoub = tempDoub * 12;
+                                }
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    case 2:
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3, R.id.input4, R.id.input5};
+                        spinnerID = new int[]{R.id.dropdown1, R.id.dropdown2, R.id.dropdown3, R.id.dropdown4, R.id.dropdown5};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                            Spinner spinTemp = (Spinner) insideFragView.findViewById(spinnerID[i]);
+                            periodSelect.add(spinTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            Boolean tempBool;
+                            if (periodSelect.get(i).getSelectedItem().toString().equals("Monthly")) {
+                                ch1.addChildPeriod(i, Boolean.TRUE);
+                                tempBool = Boolean.TRUE;
+                            } else {
+                                ch1.addChildPeriod(i, Boolean.FALSE);
+                                tempBool = Boolean.FALSE;
+                            }
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                if (tempBool) {
+                                    tempDoub = tempDoub * 12;
+                                }
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    case 3:
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3, R.id.input4};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                }
+                break;
+            case 1:
+                switch (cPosition) {
+                    case 0:
+                        inputID = new int[]{R.id.input1};
+                        spinnerID = new int[]{R.id.dropdown1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                            Spinner spinTemp = (Spinner) insideFragView.findViewById(spinnerID[i]);
+                            periodSelect.add(spinTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            Boolean tempBool;
+                            if (periodSelect.get(i).getSelectedItem().toString().equals("Monthly")) {
+                                ch1.addChildPeriod(i, Boolean.TRUE);
+                                tempBool = Boolean.TRUE;
+                            } else {
+                                ch1.addChildPeriod(i, Boolean.FALSE);
+                                tempBool = Boolean.FALSE;
+                            }
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                if (tempBool) {
+                                    tempDoub = tempDoub * 12;
+                                }
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    case 1:
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3, R.id.input4};
+                        spinnerID = new int[]{R.id.dropdown1, R.id.dropdown2, R.id.dropdown3, R.id.dropdown4};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                            Spinner spinTemp = (Spinner) insideFragView.findViewById(spinnerID[i]);
+                            periodSelect.add(spinTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            Boolean tempBool;
+                            if (periodSelect.get(i).getSelectedItem().toString().equals("Monthly")) {
+                                ch1.addChildPeriod(i, Boolean.TRUE);
+                                tempBool = Boolean.TRUE;
+                            } else {
+                                ch1.addChildPeriod(i, Boolean.FALSE);
+                                tempBool = Boolean.FALSE;
+                            }
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                if (tempBool) {
+                                    tempDoub = tempDoub * 12;
+                                }
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                }
+
+        }
+        ch1.setDisplayAmount();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
+        ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED);
     }
 }
