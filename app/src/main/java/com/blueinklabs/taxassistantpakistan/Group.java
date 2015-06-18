@@ -1,9 +1,10 @@
 package com.blueinklabs.taxassistantpakistan;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class Group {
+public class Group implements Serializable {
 
     private String Name;
     private ArrayList<Child> Items;
@@ -45,4 +46,7 @@ public class Group {
         this.Items = Items;
     }
 
+    public Child getChild(int cInt) {
+        return this.Items.get(cInt);
+    }
 }

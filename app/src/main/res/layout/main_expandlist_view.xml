@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar" />
+
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="60dp"
+        android:paddingBottom="0dp"
         android:paddingTop="10dp"
         android:id="@+id/salary_page_container"
         android:paddingRight="8dp"
         android:paddingLeft="8dp"
         android:layout_below="@+id/tool_bar"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_above="@+id/generate_button">
 
         <!--TextView
             android:layout_width="304dp"
@@ -43,9 +44,27 @@
             android:childDivider="@color/ColorGroupItemRegular1"
             android:groupIndicator="@android:color/transparent" />
 
-
     </RelativeLayout>
 
+    <Button
+        android:id="@+id/generate_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Generate Income Tax Summary"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/custom_button"
+        android:textSize="18sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_above="@+id/adView_salarypage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:textStyle="bold"
+        android:onClick="generateSummary" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView_salarypage"

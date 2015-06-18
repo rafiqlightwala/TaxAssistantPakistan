@@ -11,15 +11,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SalaryIncome extends AppCompatActivity {
+public class CompleteWorking extends AppCompatActivity implements Serializable {
     private Toolbar toolbar;
     private ExpandListAdapter ExpAdapter;
     private ArrayList<Group> ExpListItems;
@@ -58,7 +60,7 @@ public class SalaryIncome extends AppCompatActivity {
         //ExpandableList
         ExpandList = (ExpandableListView) findViewById(R.id.exp_list);
         ExpListItems = SetStandardGroups();
-        ExpAdapter = new ExpandListAdapter(SalaryIncome.this, ExpListItems);
+        ExpAdapter = new ExpandListAdapter(CompleteWorking.this, ExpListItems);
         ExpandList.setAdapter(ExpAdapter);
         ExpandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -375,6 +377,19 @@ public class SalaryIncome extends AppCompatActivity {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.add(fragment, tag);
             transaction.commit();
+        }
+    }
+
+    public void generateSummary(View v) {
+
+        switch (v.getId()) {
+            case R.id.generate_button:
+                Intent summaryIntent = new Intent(this, GenerateSummary.class);
+                summaryIntent.putExtra("expAdapts", ExpListItems);
+                startActivity(summaryIntent);
+                break;
+            default:
+                Toast.makeText(this, "Shouldn't Happen", Toast.LENGTH_LONG).show();
         }
     }
 }

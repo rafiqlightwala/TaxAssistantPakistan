@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.imageView:
-                Intent salaryIntent = new Intent(this, SalaryIncome.class);
+                Intent salaryIntent = new Intent(this, CompleteWorking.class);
                 startActivity(salaryIntent);
                 break;
             case R.id.imageView2:

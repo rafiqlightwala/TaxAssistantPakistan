@@ -1,11 +1,12 @@
 package com.blueinklabs.taxassistantpakistan;
 
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Child {
+public class Child implements Serializable {
 
     private String Name;
     private int Image;

@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -27,7 +28,7 @@ public class InputDialogFragment extends DialogFragment {
         Bundle mArgs = getArguments();
         gPosition = mArgs.getInt("gPosition");
         cPosition = mArgs.getInt("cPosition");
-        ch1 = ((SalaryIncome) getActivity()).getChildfromPos(gPosition, cPosition);
+        ch1 = ((CompleteWorking) getActivity()).getChildfromPos(gPosition, cPosition);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
@@ -46,7 +47,7 @@ public class InputDialogFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         setPositiveStep();
                         //Toast.makeText(getActivity(), Integer.toString(ch1.getChildSize()), Toast.LENGTH_SHORT).show();
-                        ((SalaryIncome) getActivity()).getExpAdapter().notifyDataSetChanged();
+                        ((CompleteWorking) getActivity()).getExpAdapter().notifyDataSetChanged();
                         dialog.dismiss();
                     }
                 })
@@ -78,6 +79,7 @@ public class InputDialogFragment extends DialogFragment {
                     case 0:
                         return R.layout.rental_income;
                     case 1:
+                        Log.d("error1", Integer.toString(gPosition) + Integer.toString(cPosition));
                         return R.layout.rent_expenses;
                 }
                 break;
@@ -133,6 +135,7 @@ public class InputDialogFragment extends DialogFragment {
         ArrayAdapter<CharSequence> adapterSpin;
         int[] spinnerID;
         int[] inputID;
+
         switch (gPosition) {
             case 0:
                 switch (cPosition) {
@@ -213,6 +216,7 @@ public class InputDialogFragment extends DialogFragment {
             case 1:
                 switch (cPosition) {
                     case 0:
+                        Log.d("error1", Integer.toString(gPosition) + Integer.toString(cPosition) + "new");
                         spinList = new ArrayList<Spinner>();
                         editList = new ArrayList<EditText>();
                         adapterSpin = ArrayAdapter.createFromResource(getActivity(),
@@ -256,6 +260,152 @@ public class InputDialogFragment extends DialogFragment {
                         break;
                 }
                 break;
+            case 2:
+                switch (cPosition) {
+                    case 0:
+                        Log.d("error1", Integer.toString(gPosition) + Integer.toString(cPosition) + "new2");
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.capital_gains_securities;
+                    case 1:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.capital_gains_immovable;
+                }
+                break;
+            case 3:
+                switch (cPosition) {
+                    case 0:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1, R.id.input2};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.dividend;
+                    case 1:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.profit_on_debt;
+                    case 2:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1, R.id.input2};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.prize_bonds;
+                    case 3:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.bonus_shares;
+
+                }
+                break;
+            case 4:
+                switch (cPosition) {
+                    case 0:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.zakat;
+                    case 1:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.donations;
+                }
+                break;
+            case 5:
+                switch (cPosition) {
+                    case 0:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.new_shares;
+                    case 1:
+                        editList = new ArrayList<EditText>();
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                            editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                            editList.get(i).setSelection(editList.get(i).length());
+                        }
+                        break;
+                    //return R.layout.pension_funds;
+                    case 2:
+                        spinList = new ArrayList<Spinner>();
+                        adapterSpin = ArrayAdapter.createFromResource(getActivity(),
+                                R.array.teacher_status, android.R.layout.simple_spinner_item);
+                        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerID = new int[]{R.id.dropdown1};
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            spinList.add((Spinner) insideFragView.findViewById(spinnerID[i]));
+                            spinList.get(i).setAdapter(adapterSpin);
+                            if (ch1.getChildPeriod(i)) {
+                                spinList.get(i).setSelection(1);
+                            } else {
+                                spinList.get(i).setSelection(0);
+                            }
+                        }
+                        break;
+                    //return R.layout.teacher;
+                }
+                break;
+            case 6:
+                ((TextView) insideFragView.findViewById(R.id.label1)).setText(ch1.getName().substring(0, 1).toUpperCase() + ch1.getName().substring(1).toLowerCase());
+                editList = new ArrayList<EditText>();
+                inputID = new int[]{R.id.input1};
+                for (int i = 0; i < inputID.length; i++) {
+                    editList.add((EditText) insideFragView.findViewById(inputID[i]));
+                    editList.get(i).setText(convertToStr(ch1.getChildComponent(i), ch1.getChildPeriod(i)));
+                    editList.get(i).setSelection(editList.get(i).length());
+                }
+                break;
+            //return R.layout.generic_one_layout;
         }
         return insideFragView;
     }
@@ -461,7 +611,247 @@ public class InputDialogFragment extends DialogFragment {
                         }
                         break;
                 }
+            case 2:
+                switch (cPosition) {
+                    case 0:
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.capital_gains_securities;
+                    case 1:
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.capital_gains_immovable;
+                }
+                break;
+            case 3:
+                switch (cPosition) {
+                    case 0:
+                        inputID = new int[]{R.id.input1, R.id.input2};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.dividend;
+                    case 1:
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.profit_on_debt;
+                    case 2:
+                        inputID = new int[]{R.id.input1, R.id.input2};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.prize_bonds;
+                    case 3:
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.bonus_shares;
 
+                }
+                break;
+            case 4:
+                switch (cPosition) {
+                    case 0:
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.zakat;
+                    case 1:
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.donations;
+                }
+                break;
+            case 5:
+                switch (cPosition) {
+                    case 0:
+                        inputID = new int[]{R.id.input1, R.id.input2, R.id.input3};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.new_shares;
+                    case 1:
+                        inputID = new int[]{R.id.input1};
+                        for (int i = 0; i < inputID.length; i++) {
+                            EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                            inputTextNum.add(inputTemp);
+                        }
+                        for (int i = 0; i < inputID.length; i++) {
+                            Double tempDouble;
+                            ch1.addChildPeriod(i, Boolean.FALSE);
+                            if (inputTextNum.get(i).getText().toString().equals("")) {
+                                tempDouble = Double.valueOf(0);
+                            } else {
+                                Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                                tempDouble = tempDoub;
+                            }
+                            ch1.addChildComponent(i, tempDouble);
+                        }
+                        break;
+                    //return R.layout.pension_funds;
+                    case 2:
+                        spinnerID = new int[]{R.id.dropdown1};
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            Spinner spinTemp = (Spinner) insideFragView.findViewById(spinnerID[i]);
+                            periodSelect.add(spinTemp);
+                        }
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            if (periodSelect.get(i).getSelectedItem().toString().equals("Yes")) {
+                                ch1.addChildPeriod(i, Boolean.TRUE);
+                            } else {
+                                ch1.addChildPeriod(i, Boolean.FALSE);
+                            }
+                        }
+                        break;
+                    //return R.layout.teacher;
+                }
+                break;
+            case 6:
+                inputID = new int[]{R.id.input1};
+                for (int i = 0; i < inputID.length; i++) {
+                    EditText inputTemp = (EditText) insideFragView.findViewById(inputID[i]);
+                    inputTextNum.add(inputTemp);
+                }
+                for (int i = 0; i < inputID.length; i++) {
+                    Double tempDouble;
+                    ch1.addChildPeriod(i, Boolean.FALSE);
+                    if (inputTextNum.get(i).getText().toString().equals("")) {
+                        tempDouble = Double.valueOf(0);
+                    } else {
+                        Double tempDoub = Double.parseDouble(inputTextNum.get(i).getText().toString());
+                        tempDouble = tempDoub;
+                    }
+                    ch1.addChildComponent(i, tempDouble);
+                }
+                break;
+            //return R.layout.generic_one_layout;
         }
         ch1.setDisplayAmount();
     }

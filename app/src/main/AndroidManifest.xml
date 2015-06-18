@@ -43,12 +43,20 @@
                 android:value="com.blueinklabs.taxassistantpakistan.MainActivity"/>
         </activity>
         <activity
-            android:name="com.blueinklabs.taxassistantpakistan.SalaryIncome"
-            android:label="@string/salary_income"
+            android:name=".CompleteWorking"
+            android:label="@string/complete_working"
             android:parentActivityName="com.blueinklabs.taxassistantpakistan.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.blueinklabs.taxassistantpakistan.MainActivity"/>
+        </activity>
+        <activity
+            android:name=".GenerateSummary"
+            android:label="@string/generate_summary"
+            android:parentActivityName="com.blueinklabs.taxassistantpakistan.CompleteWorking">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.blueinklabs.taxassistantpakistan.CompleteWorking" />
         </activity>
         <!--Include the AdActivity configChanges and theme. -->
         <activity android:name="com.google.android.gms.ads.AdActivity"

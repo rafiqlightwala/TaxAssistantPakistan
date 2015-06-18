@@ -8,9 +8,10 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ExpandListAdapter extends BaseExpandableListAdapter {
+public class ExpandListAdapter extends BaseExpandableListAdapter implements Serializable {
 
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_ITEM_DISPLAY = 1;
