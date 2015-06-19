@@ -4,12 +4,14 @@
     <color name="ColorPrimaryDark">#D32F2F</color>
     <color name="ColorAccent1">#FFEB3B</color>
     <color name="ColorWhite">#ffffffff</color>
+    <color name="ColorRowDark">#ffffeb3b</color>
+    <color name="ColorRowLight">#fffffa8a</color>
 
     <color name="ColorChildItemRegular">#ffe6e6e6</color>
     <color name="textGray">#ff727272</color>
     <color name="ColorGroupItemRegular1">#ffebebeb</color>
     <color name="ColorGroupItemRegular">#ffffeb3b</color>
     <color name="ColorGroupItemResult">#ffeb3b</color>
-
+    <color name="DividerColor">#ffaa2727</color>
 
 </resources>

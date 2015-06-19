@@ -203,7 +203,7 @@ public class CompleteWorking extends AppCompatActivity implements Serializable {
     }
 
     public ArrayList<Group> SetStandardGroups() {
-        String group_names[] = {"INCOME FROM SALARY", "INCOME FROM PROPERTY", "CAPITAL GAINS", "INCOME FROM OTHER SOURCES", "DEDUCTIBLE ALLOWANCES", "TAX REDUCTIONS & CREDITS", "ADVANCE TAX (ADJUSTABLE)"};
+        String group_names[] = {"INCOME FROM SALARY", "INCOME FROM RENT", "CAPITAL GAINS", "INCOME FROM OTHER SOURCES", "DEDUCTIBLE ALLOWANCES", "TAX REDUCTIONS & CREDITS", "ADVANCE TAX (ADJUSTABLE)"};
 
         ArrayList<Group> list = new ArrayList<Group>();
         ArrayList<Child> ch_list;
@@ -228,7 +228,7 @@ public class CompleteWorking extends AppCompatActivity implements Serializable {
                     child4.setName("EXPENDITURE REIMBURSEMENTS");
                     ch_list.add(child4);
                     break;
-                case "INCOME FROM PROPERTY":
+                case "INCOME FROM RENT":
                     child1 = new Child();
                     child1.setName("RENTAL INCOME");
                     ch_list.add(child1);

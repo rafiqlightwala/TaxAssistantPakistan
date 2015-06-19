@@ -91,6 +91,23 @@ public class Child implements Serializable {
         }
     }
 
+    public String getDisplayAmountOnly() {
+        if (displayAmount == 0) {
+            return "";
+        } else {
+            DecimalFormat formatter = new DecimalFormat("#,###");
+            return formatter.format(displayAmount);
+        }
+    }
+
+    public Double getDisplayNumber() {
+        if (displayAmount.intValue() == 0) {
+            return Double.valueOf(0);
+        } else {
+            return displayAmount;
+        }
+    }
+
     public void setDisplayAmount() {
         Double tempDouble = Double.valueOf(0);
         for (int i = 0; i < getChildComponentSize(); i++) {

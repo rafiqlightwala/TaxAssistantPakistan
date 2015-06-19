@@ -611,6 +611,7 @@ public class InputDialogFragment extends DialogFragment {
                         }
                         break;
                 }
+                break;
             case 2:
                 switch (cPosition) {
                     case 0:

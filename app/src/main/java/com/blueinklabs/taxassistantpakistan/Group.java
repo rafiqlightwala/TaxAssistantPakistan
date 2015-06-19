@@ -49,4 +49,19 @@ public class Group implements Serializable {
     public Child getChild(int cInt) {
         return this.Items.get(cInt);
     }
+
+    public int getChildCount() {
+        return Items.size();
+    }
+
+    public boolean isGroupEmpty() {
+        Double tempVal = Double.valueOf(0);
+        for (int i = 0; i < getChildCount(); i++) {
+            tempVal = tempVal + Items.get(i).getComponentsSum();
+        }
+        if (tempVal.intValue() == 0) {
+            return Boolean.TRUE;
+        } else
+            return Boolean.FALSE;
+    }
 }

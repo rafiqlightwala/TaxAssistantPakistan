@@ -1,11 +1,15 @@
 package com.blueinklabs.taxassistantpakistan;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -77,7 +81,8 @@ public class GenerateSummary extends AppCompatActivity {
         mAdView.loadAd(adRequest);
 
         eGroup = (ArrayList<Group>) getIntent().getSerializableExtra("expAdapts");
-        Toast.makeText(this, eGroup.get(0).getChild(0).getDisplayAmount(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getChildfromPos(0, 0).getDisplayAmount(), Toast.LENGTH_SHORT).show();
+        runSummaryRoutine();
 
     }
 
@@ -86,6 +91,31 @@ public class GenerateSummary extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public void runSummaryRoutine() {
+        TableRow tempRow;
+        TextView tempTextView;
+        Resources res = getResources();
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < eGroup.get(i).getChildCount(); j++) {
+                if (getChildfromPos(i, j).getComponentsSum().intValue() == 0) {
+                    int id = res.getIdentifier("tableRow" + i + j, "id", getPackageName());
+                    tempRow = (TableRow) findViewById(id);
+                    tempRow.setVisibility(View.GONE);
+                } else {
+                    int id1 = res.getIdentifier("textView" + i + j + "01", "id", getPackageName());
+                    tempTextView = (TextView) findViewById(id1);
+                    tempTextView.setText(getChildfromPos(i, j).getDisplayAmountOnly());
+                    //int id2 = res.getIdentifier("textView" + i + j + "02", "id", getPackageName());
+                }
+            }
+            if (eGroup.get(i).isGroupEmpty()) {
+                int id = res.getIdentifier("tableRowGroup" + i, "id", getPackageName());
+                tempRow = (TableRow) findViewById(id);
+                tempRow.setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override
@@ -109,5 +139,9 @@ public class GenerateSummary extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+    public Child getChildfromPos(int gPos, int cPos) {
+        return eGroup.get(gPos).getChild(cPos);
     }
 }
