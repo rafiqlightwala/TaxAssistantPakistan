@@ -10,356 +10,2244 @@
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tool_bar"
-        android:clipToPadding="false"
-        android:gravity="center_horizontal"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/adView_mainpage"
+        android:layout_below="@+id/tool_bar">
 
-        <TextView
-            android:id="@+id/main_page_text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="false"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
-            android:text="Tax Summary for the Year ending 30th June 2015"
-            android:textColor="@color/ColorPrimaryDark"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TableLayout
-            android:id="@+id/table"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/main_page_text1"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:gravity="center_horizontal"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp">
 
-            <TableRow
-                android:id="@+id/tableRowHeader"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:background="@color/ColorPrimaryDark"
-                android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/main_page_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Tax Summary for the Year ending 30th June 2015"
+                android:textColor="@color/ColorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textViewHeader00"
-                    android:paddingBottom="10dp"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="10dp"
-                    android:text="COMPONENT DETAIL"
-                    android:textColor="@color/ColorWhite"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textViewHeader01"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="5dp"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="10dp"
-                    android:text="INCOME EXEMPTED FROM TAX"
-                    android:textColor="@color/ColorWhite"
-                    android:textSize="14sp"
-                    android:gravity="center_horizontal"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textViewHeader02"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="5dp"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="10dp"
-                    android:text="INCOME SUBJECT TO TAX"
-                    android:textColor="@color/ColorWhite"
-                    android:textSize="14sp"
-                    android:gravity="center_horizontal"
-                    android:textStyle="bold" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRowGroup0"
+            <TableLayout
+                android:id="@+id/table"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/ColorRowDark"
-                android:gravity="center_vertical">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/table1"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textViewGroup00"
-                    android:padding="5dp"
-                    android:text="Total Salary Income"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                <TableRow
+                    android:id="@+id/tableRowHeader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorPrimaryDark"
+                    android:gravity="center_vertical">
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/textViewHeader00"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="INCOME DETAILS FOR THE YEAR"
+                        android:textColor="@color/ColorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textViewGroup01"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal"
-                    android:textStyle="bold" />
+                        <View style="@style/Divider" />
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/textViewHeader01"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="EXEMPTED FROM TAX"
+                        android:textColor="@color/ColorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textViewGroup02"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal"
-                    android:textStyle="bold" />
-            </TableRow>
+                        <View style="@style/Divider" />
+                    </LinearLayout>
 
-            <TableRow
-                android:id="@+id/tableRow00"
+                    <TextView
+                        android:id="@+id/textViewHeader02"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="SUBJECT TO TAX"
+                        android:textColor="@color/ColorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRowGroup0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textViewGroup00"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Total Salary Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewGroup01"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewGroup02"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow00"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView0000"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Pay &amp; Wages"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView0001"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView0002"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView0100"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Medical Allowance"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView0101"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView0102"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow02"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView0200"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Other Allowances"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView0201"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView0202"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow03"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView0300"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Reimbursement"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView0301"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView0302"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+                --------------------
+
+                <TableRow
+                    android:id="@+id/tableRowGroup1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textViewGroup10"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Total Rental Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewGroup11"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewGroup12"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView1000"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Rental Income"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView1001"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView1002"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView1100"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="less: Expenses"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView1101"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView1102"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+                --------------------
+
+                <TableRow
+                    android:id="@+id/tableRowGroup2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textViewGroup20"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Net Capital Gains"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewGroup21"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewGroup22"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow20"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView2000"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Securities, Funds"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView2001"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView2002"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow21"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView2100"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Immovable Prop"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView2101"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView2102"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+                ---------
+
+                <TableRow
+                    android:id="@+id/tableRowGroup3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textViewGroup30"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Other Sources Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewGroup31"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewGroup32"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow30"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView3000"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Dividend"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView3001"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView3002"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow31"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView3100"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Profit on Debt"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView3101"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView3102"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow32"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView3200"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="P. Bonds, Lottery"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView3201"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView3202"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow33"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView3300"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Bonus Shares"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView3301"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView3302"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/table1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/ColorRowLight"
-                android:gravity="center_vertical">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/main_page_text1"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView0000"
-                    android:text="Pay &amp; Wages"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="5dp" />
+                <TableRow
+                    android:id="@+id/table1RowHeader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorPrimaryDark"
+                    android:gravity="center_vertical">
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/textView1Header00"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="CALCULATION OF TAX"
+                        android:textColor="@color/ColorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textView0001"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal" />
+                        <View style="@style/Divider" />
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/textView1Header02"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="PKR"
+                        android:textColor="@color/ColorWhite"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                <TableRow
+                    android:id="@+id/taxCalcTotalSalary"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/textView0002"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/taxCalcTotalSalaryDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Total Salary Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            <TableRow
-                android:id="@+id/tableRow01"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/ColorRowLight"
-                android:gravity="center_vertical">
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textView0100"
-                    android:text="Medical Allowance"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="5dp" />
+                        <View style="@style/Divider" />
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/taxCalcTotalSalaryPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                <TableRow
+                    android:id="@+id/taxCalcZakat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/textView0101"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal" />
+                    <TextView
+                        android:id="@+id/taxCalcZakatDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="less: Zakat"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                        <View style="@style/Divider" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView0102"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal" />
-            </TableRow>
 
-            <TableRow
-                android:id="@+id/tableRow02"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/ColorRowLight"
-                android:gravity="center_vertical">
+                    <TextView
+                        android:id="@+id/taxCalcZakatPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
 
-                <TextView
-                    android:id="@+id/textView0200"
-                    android:text="Other Allowance"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="5dp" />
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                </TableRow>
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                <TableRow
+                    android:id="@+id/taxCalcTaxableSalary"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/textView0201"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal" />
+                    <TextView
+                        android:id="@+id/taxCalcTaxableSalaryDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Taxable Salary Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                        <View style="@style/Divider" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView0202"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/taxCalcTaxableSalaryPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-            <TableRow
-                android:id="@+id/tableRow03"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/ColorRowLight"
-                android:gravity="center_vertical">
+                <TableRow
+                    android:id="@+id/taxCalcGrossTax"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/textView0300"
-                    android:text="Reimbursement"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="5dp" />
+                    <TextView
+                        android:id="@+id/taxCalcGrossTaxDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Gross Tax on Salary Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                        <View style="@style/Divider" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView0301"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal" />
+                    <TextView
+                        android:id="@+id/taxCalcGrossTaxPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent">
+                <TableRow
+                    android:id="@+id/taxCalcSeniorCitizen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
 
-                    <View style="@style/Divider" />
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/taxCalcSeniorCitizenDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="less: Senior Citizen Benefit"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
 
-                <TextView
-                    android:id="@+id/textView0302"
-                    android:padding="5dp"
-                    android:text="Row 1"
-                    android:layout_weight="1.25"
-                    android:layout_width="0dp"
-                    android:textSize="16sp"
-                    android:gravity="center_horizontal" />
-            </TableRow>
-        </TableLayout>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
 
-    </RelativeLayout>
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcSeniorCitizenPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcTeacher"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcTeacherDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="less: Teacher Benefit"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcTeacherPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcDonation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcDonationDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="less: Credit on Donations"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcDonationPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcInvestment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcInvestmentDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="less: Credit on Investment"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcInvestmentPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcPension"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcPensionDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="less: Credit on Pension Fund"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcPensionPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcNetTax"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcNetTaxDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Net Tax on Salary Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcNetTaxPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/dividerhead1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ColorPrimaryDark"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp">
+
+                        android:background="@color/ColorPrimaryDark" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcRentalIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcRentalIncomeDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Taxable Rental Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcRentalIncomePKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcRentalTax"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcRentalTaxDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Net Tax on Rental Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcRentalTaxPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/dividerhead2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ColorPrimaryDark"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp">
+
+                        android:background="@color/ColorPrimaryDark" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcCGIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcCGIncomeDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Capital Gains on Securities"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcCGIncomePKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcCGTax"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcCGTaxDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="CG Tax on Securities"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcCGTaxPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcBelow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcBelow1Desc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="CGT for below 1 year"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcBelow1PKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcBtw12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcBtw12Desc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="CGT for 1-2 years"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcBtw12PKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcGreater2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcGreater2Desc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="CGT for above 2 years"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcGreater2PKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcCGImmov"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcCGImmovDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Capital Gains on Immovable Prop"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcCGImmovPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcCGImmovTax"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcCGImmovTaxDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="CG Tax on Immovable Prop"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcCGImmovTaxPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcImmovBelow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcImmovBelow1Desc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="CGT for below 1 year"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcImmovBelow1PKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcImmovBtw12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcImmovBtw12Desc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="CGT for 1-2 years"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcImmovBtw12PKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcImmovGreater2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcImmovGreater2Desc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="CGT for above 2 years"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcImmovGreater2PKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/dividerhead3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ColorPrimaryDark"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp">
+
+                        android:background="@color/ColorPrimaryDark" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcOtherSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Income from Other Sources"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcOtherSourcesTax"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowDark"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesTaxDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="Tax on Other Sources Income"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesTaxPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/ColorPrimaryDark" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcOtherSourcesDividend"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesDividendDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Tax on Regular Dividend"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesDividendPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcOtherSourcesPPDividend"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesPPDividendDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Tax on P.P Co Dividend"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesPPDividendPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcOtherSourcesProfitonDebt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesProfitonDebtDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Tax on Profit on Debt"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesProfitonDebtPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcOtherSourcesPrizeBonds"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesPrizeBondsDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Tax on Prize Bonds"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesPrizeBondsPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcOtherSourcesQuiz"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesQuizDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Tax on Quiz, SP Gifts"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesQuizPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcOtherSourcesBonus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowLight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesBonusDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Tax on Bonus Shares"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcOtherSourcesBonusPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/dividerhead4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ColorPrimaryDark"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp">
+
+                        android:background="@color/ColorPrimaryDark" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcTOTALINCOME"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowHighlight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcTOTALINCOMEDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="TOTAL INCOME FOR THE YEAR"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcTOTALINCOMEPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcTOTALTAXLIAB"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowHighlight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcTOTALTAXLIABDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="TOTAL TAX LIABILITY"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcTOTALTAXLIABPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcTOTALTAXADVANCE"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowHighlight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcTOTALTAXADVANCEDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="TAX PAID/CHARGED IN ADVANCE"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcTOTALTAXADVANCEPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/taxCalcTOTALTAXPAYABLE"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/ColorRowHighlight"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/taxCalcTOTALTAXPAYABLEDesc"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:padding="5dp"
+                        android:text="INCOME TAX PAYABLE"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent">
+
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/taxCalcTOTALTAXPAYABLEPKR"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.10"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="Row 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+
+            </TableLayout>
+        </RelativeLayout>
+    </ScrollView>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView_mainpage"

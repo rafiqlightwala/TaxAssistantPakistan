@@ -6,6 +6,7 @@
     <color name="ColorWhite">#ffffffff</color>
     <color name="ColorRowDark">#ffffeb3b</color>
     <color name="ColorRowLight">#fffffa8a</color>
+    <color name="ColorRowHighlight">#ffffcd3c</color>
 
     <color name="ColorChildItemRegular">#ffe6e6e6</color>
     <color name="textGray">#ff727272</color>

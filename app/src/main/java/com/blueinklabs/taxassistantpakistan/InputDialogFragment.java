@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,6 +121,8 @@ public class InputDialogFragment extends DialogFragment {
                         return R.layout.pension_funds;
                     case 2:
                         return R.layout.teacher;
+                    case 3:
+                        return R.layout.senior_citizen;
                 }
                 break;
             case 6:
@@ -393,6 +396,22 @@ public class InputDialogFragment extends DialogFragment {
                         }
                         break;
                     //return R.layout.teacher;
+                    case 3:
+                        spinList = new ArrayList<Spinner>();
+                        adapterSpin = ArrayAdapter.createFromResource(getActivity(),
+                                R.array.teacher_status, android.R.layout.simple_spinner_item);
+                        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerID = new int[]{R.id.dropdown1};
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            spinList.add((Spinner) insideFragView.findViewById(spinnerID[i]));
+                            spinList.get(i).setAdapter(adapterSpin);
+                            if (ch1.getChildPeriod(i)) {
+                                spinList.get(i).setSelection(1);
+                            } else {
+                                spinList.get(i).setSelection(0);
+                            }
+                        }
+                        break;
                 }
                 break;
             case 6:
@@ -411,15 +430,16 @@ public class InputDialogFragment extends DialogFragment {
     }
 
     private String convertToStr(Double inpDoub, Boolean inpBool) {
+        DecimalFormat formatter = new DecimalFormat("#");
         if (inpDoub.equals(Double.valueOf(0))) {
             return "";
         } else {
             if (inpBool) {
                 inpDoub = inpDoub / 12;
 
-                return Integer.toString(inpDoub.intValue());
+                return formatter.format(inpDoub);
             }
-            return Integer.toString(inpDoub.intValue());
+            return formatter.format(inpDoub);
         }
     }
 
@@ -832,6 +852,20 @@ public class InputDialogFragment extends DialogFragment {
                         }
                         break;
                     //return R.layout.teacher;
+                    case 3:
+                        spinnerID = new int[]{R.id.dropdown1};
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            Spinner spinTemp = (Spinner) insideFragView.findViewById(spinnerID[i]);
+                            periodSelect.add(spinTemp);
+                        }
+                        for (int i = 0; i < spinnerID.length; i++) {
+                            if (periodSelect.get(i).getSelectedItem().toString().equals("Yes")) {
+                                ch1.addChildPeriod(i, Boolean.TRUE);
+                            } else {
+                                ch1.addChildPeriod(i, Boolean.FALSE);
+                            }
+                        }
+                        break;
                 }
                 break;
             case 6:

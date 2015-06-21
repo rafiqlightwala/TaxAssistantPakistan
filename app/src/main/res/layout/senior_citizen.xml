@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/headerview"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:background="@color/ColorPrimaryDark"
+        android:textColor="@color/ColorWhite"
+        android:text="ENTER VALUES"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:paddingLeft="8dp"
+        android:gravity="bottom"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:id="@+id/label1"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="45dp"
+            android:layout_marginRight="2dp"
+            android:text="Are you a senior citizen above the age of 60 years?"
+            android:gravity="left|center_vertical"
+            android:layout_gravity="bottom"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/dropdown1"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical" />
+
+    </LinearLayout>
+</LinearLayout>

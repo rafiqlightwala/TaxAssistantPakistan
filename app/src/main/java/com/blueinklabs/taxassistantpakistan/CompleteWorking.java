@@ -276,6 +276,9 @@ public class CompleteWorking extends AppCompatActivity implements Serializable {
                     child2 = new Child();
                     child2.setName("FULL TIME TEACHER OR RESEARCHER");
                     ch_list.add(child2);
+                    child4 = new Child();
+                    child4.setName("SENIOR CITIZEN ABOVE 60");
+                    ch_list.add(child4);
                     break;
                 case "ADVANCE TAX (ADJUSTABLE)":
                     child1 = new Child();
