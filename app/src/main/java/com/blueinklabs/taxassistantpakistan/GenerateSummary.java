@@ -20,16 +20,15 @@ import com.google.android.gms.analytics.Tracker;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by Dell on 6/18/2015.
- */
 public class GenerateSummary extends AppCompatActivity {
     private Toolbar toolbar;
     private ArrayList<Group> eGroup;
     private ArrayList<Double> groupSumTaxable, groupSumExempt;
     private Double taxableSalary;
     private Double grossTaxonSalary;
+    private Double netTaxonSalary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,16 +111,15 @@ public class GenerateSummary extends AppCompatActivity {
         TableRow tempRow;
         TextView tempTextView;
         TextView tempTextView1;
-        groupSumTaxable = new ArrayList<Double>();
-        groupSumExempt = new ArrayList<Double>();
-        Double tempDouble = Double.valueOf(0);
-        Double tempDouble1 = Double.valueOf(0);
+        groupSumTaxable = new ArrayList<>();
+        groupSumExempt = new ArrayList<>();
+        Double tempDouble;
+        Double tempDouble1;
         DecimalFormat formatter = new DecimalFormat("#,###");
 
-
         for (int i = 0; i < 4; i++) {
-            groupSumTaxable.add(Double.valueOf(0));
-            groupSumExempt.add(Double.valueOf(0));
+            groupSumTaxable.add((double) 0);
+            groupSumExempt.add((double) 0);
         }
         Resources res = getResources();
         for (int i = 0; i < 4; i++) {
@@ -186,7 +184,7 @@ public class GenerateSummary extends AppCompatActivity {
                                     tempTextView1.setText("(" + getChildfromPos(i, j).getDisplayAmountOnly() + ")");
                                     tempDouble = groupSumTaxable.get(i) - getChildfromPos(i, j).getComponentsSum();
                                     if (tempDouble < 0) {
-                                        tempDouble = Double.valueOf(0);
+                                        tempDouble = (double) 0;
                                     }
                                     groupSumTaxable.set(i, tempDouble);
                                     break;
@@ -236,47 +234,7 @@ public class GenerateSummary extends AppCompatActivity {
                                     break;
                             }
                             break;
-                        case 4:
-                            switch (j) {
-                                case 0:
-
-                                    break;
-                                case 1:
-
-                                    break;
-                            }
-                            break;
-                        case 5:
-                            switch (j) {
-                                case 0:
-
-                                    break;
-                                case 1:
-
-                                    break;
-                                case 2:
-
-                                    break;
-                            }
-                            break;
-                        case 6:
-                            switch (j) {
-                                case 0:
-
-                                    break;
-                                case 1:
-
-                                    break;
-                                case 2:
-
-                                    break;
-                                case 3:
-
-                                    break;
-                            }
-                            break;
                     }
-
                 }
             }
             if (eGroup.get(i).isGroupEmpty()) {
@@ -321,7 +279,7 @@ public class GenerateSummary extends AppCompatActivity {
             int id = res.getIdentifier("taxCalcTaxableSalary", "id", getPackageName());
             tempRow = (TableRow) findViewById(id);
             tempRow.setVisibility(View.GONE);
-            taxableSalary = Double.valueOf(0);
+            taxableSalary = (double) 0;
             id = res.getIdentifier("taxCalcGrossTax", "id", getPackageName());
             tempRow = (TableRow) findViewById(id);
             tempRow.setVisibility(View.GONE);
@@ -354,10 +312,10 @@ public class GenerateSummary extends AppCompatActivity {
             int id = res.getIdentifier("taxCalcTaxableSalary", "id", getPackageName());
             tempRow = (TableRow) findViewById(id);
             tempRow.setVisibility(View.GONE);
-            grossTaxonSalary = Double.valueOf(0);
+            grossTaxonSalary = (double) 0;
         } else {
             if (taxableSalary <= 400000) {
-                grossTaxonSalary = Double.valueOf(0);
+                grossTaxonSalary = (double) 0;
             } else if (taxableSalary > 400000 && taxableSalary <= 750000) {
                 grossTaxonSalary = (taxableSalary - 400000) * 0.05;
             } else if (taxableSalary > 750000 && taxableSalary <= 1400000) {
@@ -389,13 +347,13 @@ public class GenerateSummary extends AppCompatActivity {
                 if (taxableSalary <= 1000000) {
                     reductionFromSenior = grossTaxonSalary * 0.5;
                 } else {
-                    reductionFromSenior = Double.valueOf(0);
+                    reductionFromSenior = (double) 0;
                 }
                 int id1 = res.getIdentifier("taxCalcSeniorCitizenPKR", "id", getPackageName());
                 tempTextView = (TextView) findViewById(id1);
                 tempTextView.setText("(" + formatter.format(reductionFromSenior) + ")");
             } else {
-                reductionFromSenior = Double.valueOf(0);
+                reductionFromSenior = (double) 0;
                 int id1 = res.getIdentifier("taxCalcSeniorCitizen", "id", getPackageName());
                 tempRow = (TableRow) findViewById(id1);
                 tempRow.setVisibility(View.GONE);
@@ -407,7 +365,7 @@ public class GenerateSummary extends AppCompatActivity {
                 tempTextView = (TextView) findViewById(id1);
                 tempTextView.setText("(" + formatter.format(reductionFromTeacher) + ")");
             } else {
-                reductionFromTeacher = Double.valueOf(0);
+                reductionFromTeacher = (double) 0;
                 int id1 = res.getIdentifier("taxCalcTeacher", "id", getPackageName());
                 tempRow = (TableRow) findViewById(id1);
                 tempRow.setVisibility(View.GONE);
@@ -415,7 +373,7 @@ public class GenerateSummary extends AppCompatActivity {
             Double grossTaxReduced = grossTaxonSalary - reductionFromSenior - reductionFromTeacher;
             Double creditFromDonation;
             if (getChildfromPos(4, 1).getComponentsSum().intValue() == 0) {
-                creditFromDonation = Double.valueOf(0);
+                creditFromDonation = (double) 0;
                 int id1 = res.getIdentifier("taxCalcDonation", "id", getPackageName());
                 tempRow = (TableRow) findViewById(id1);
                 tempRow.setVisibility(View.GONE);
@@ -433,7 +391,7 @@ public class GenerateSummary extends AppCompatActivity {
             }
             Double creditFromInvestment;
             if (getChildfromPos(5, 0).getComponentsSum().intValue() == 0) {
-                creditFromInvestment = Double.valueOf(0);
+                creditFromInvestment = (double) 0;
                 int id1 = res.getIdentifier("taxCalcInvestment", "id", getPackageName());
                 tempRow = (TableRow) findViewById(id1);
                 tempRow.setVisibility(View.GONE);
@@ -448,7 +406,7 @@ public class GenerateSummary extends AppCompatActivity {
             }
             Double creditFromPension;
             if (getChildfromPos(5, 1).getComponentsSum().intValue() == 0) {
-                creditFromPension = Double.valueOf(0);
+                creditFromPension = (double) 0;
                 int id1 = res.getIdentifier("taxCalcPension", "id", getPackageName());
                 tempRow = (TableRow) findViewById(id1);
                 tempRow.setVisibility(View.GONE);
@@ -456,11 +414,11 @@ public class GenerateSummary extends AppCompatActivity {
                 Double Cvalue;
                 Cvalue = Math.min(taxableSalary * 0.2, getChildfromPos(5, 1).getComponentsSum());
                 creditFromPension = (grossTaxReduced / taxableSalary) * Cvalue;
-                int id1 = res.getIdentifier("taxCalcPensiontPKR", "id", getPackageName());
+                int id1 = res.getIdentifier("taxCalcPensionPKR", "id", getPackageName());
                 tempTextView = (TextView) findViewById(id1);
                 tempTextView.setText("(" + formatter.format(creditFromPension) + ")");
             }
-            Double netTaxonSalary = grossTaxonSalary - reductionFromSenior - reductionFromTeacher - creditFromDonation - creditFromInvestment - creditFromPension;
+            netTaxonSalary = grossTaxonSalary - reductionFromSenior - reductionFromTeacher - creditFromDonation - creditFromInvestment - creditFromPension;
             int id2 = res.getIdentifier("taxCalcNetTaxPKR", "id", getPackageName());
             tempTextView = (TextView) findViewById(id2);
             tempTextView.setText(formatter.format(netTaxonSalary));
@@ -483,13 +441,13 @@ public class GenerateSummary extends AppCompatActivity {
             id1 = res.getIdentifier("taxCalcRentalTax", "id", getPackageName());
             tempRow = (TableRow) findViewById(id1);
             tempRow.setVisibility(View.GONE);
-            rentalTax = Double.valueOf(0);
+            rentalTax = (double) 0;
         } else {
             int id1 = res.getIdentifier("taxCalcRentalIncomePKR", "id", getPackageName());
             tempTextView1 = (TextView) findViewById(id1);
             tempTextView1.setText(formatter.format(groupSumTaxable.get(1)));
             if (groupSumTaxable.get(1) <= 150000) {
-                rentalTax = Double.valueOf(0);
+                rentalTax = (double) 0;
             } else if (groupSumTaxable.get(1) > 150000 && groupSumTaxable.get(1) <= 1000000) {
                 rentalTax = (groupSumTaxable.get(1) - 150000) * 0.1;
             } else {
@@ -537,12 +495,15 @@ public class GenerateSummary extends AppCompatActivity {
             id1 = res.getIdentifier("taxCalcImmovGreater2", "id", getPackageName());
             tempRow = (TableRow) findViewById(id1);
             tempRow.setVisibility(View.GONE);
-            CGTsecurities = Double.valueOf(0);
-            CGTimmovableprop = Double.valueOf(0);
+            CGTsecurities = (double) 0;
+            CGTimmovableprop = (double) 0;
 
         } else {
             if (getChildfromPos(2, 0).getComponentsSum().intValue() == 0) {
-                int id1 = res.getIdentifier("taxCalcCGTax", "id", getPackageName());
+                int id1 = res.getIdentifier("taxCalcCGIncome", "id", getPackageName());
+                tempRow = (TableRow) findViewById(id1);
+                tempRow.setVisibility(View.GONE);
+                id1 = res.getIdentifier("taxCalcCGTax", "id", getPackageName());
                 tempRow = (TableRow) findViewById(id1);
                 tempRow.setVisibility(View.GONE);
                 id1 = res.getIdentifier("taxCalcBelow1", "id", getPackageName());
@@ -554,7 +515,7 @@ public class GenerateSummary extends AppCompatActivity {
                 id1 = res.getIdentifier("taxCalcGreater2", "id", getPackageName());
                 tempRow = (TableRow) findViewById(id1);
                 tempRow.setVisibility(View.GONE);
-                CGTsecurities = Double.valueOf(0);
+                CGTsecurities = (double) 0;
             } else {
                 int id4 = res.getIdentifier("taxCalcCGIncomePKR", "id", getPackageName());
                 tempTextView1 = (TextView) findViewById(id4);
@@ -563,7 +524,7 @@ public class GenerateSummary extends AppCompatActivity {
                     int id1 = res.getIdentifier("taxCalcBelow1", "id", getPackageName());
                     tempRow = (TableRow) findViewById(id1);
                     tempRow.setVisibility(View.GONE);
-                    CGTsecurities0 = Double.valueOf(0);
+                    CGTsecurities0 = (double) 0;
                 } else {
                     CGTsecurities0 = getChildfromPos(2, 0).getChildComponent(0) * 0.125;
                     int id1 = res.getIdentifier("taxCalcBelow1PKR", "id", getPackageName());
@@ -574,7 +535,7 @@ public class GenerateSummary extends AppCompatActivity {
                     int id1 = res.getIdentifier("taxCalcBtw12", "id", getPackageName());
                     tempRow = (TableRow) findViewById(id1);
                     tempRow.setVisibility(View.GONE);
-                    CGTsecurities1 = Double.valueOf(0);
+                    CGTsecurities1 = (double) 0;
                 } else {
                     CGTsecurities1 = getChildfromPos(2, 0).getChildComponent(1) * 0.1;
                     int id1 = res.getIdentifier("taxCalcBtw12PKR", "id", getPackageName());
@@ -585,7 +546,7 @@ public class GenerateSummary extends AppCompatActivity {
                     int id1 = res.getIdentifier("taxCalcGreater2", "id", getPackageName());
                     tempRow = (TableRow) findViewById(id1);
                     tempRow.setVisibility(View.GONE);
-                    CGTsecurities2 = Double.valueOf(0);
+                    CGTsecurities2 = (double) 0;
                 } else {
                     CGTsecurities2 = getChildfromPos(2, 0).getChildComponent(2) * 0;
                     int id1 = res.getIdentifier("taxCalcGreater2PKR", "id", getPackageName());
@@ -601,7 +562,10 @@ public class GenerateSummary extends AppCompatActivity {
 
 
             if (getChildfromPos(2, 1).getComponentsSum().intValue() == 0) {
-                int id1 = res.getIdentifier("taxCalcCGImmovTax", "id", getPackageName());
+                int id1 = res.getIdentifier("taxCalcCGImmov", "id", getPackageName());
+                tempRow = (TableRow) findViewById(id1);
+                tempRow.setVisibility(View.GONE);
+                id1 = res.getIdentifier("taxCalcCGImmovTax", "id", getPackageName());
                 tempRow = (TableRow) findViewById(id1);
                 tempRow.setVisibility(View.GONE);
                 id1 = res.getIdentifier("taxCalcImmovBelow1", "id", getPackageName());
@@ -613,7 +577,7 @@ public class GenerateSummary extends AppCompatActivity {
                 id1 = res.getIdentifier("taxCalcImmovGreater2", "id", getPackageName());
                 tempRow = (TableRow) findViewById(id1);
                 tempRow.setVisibility(View.GONE);
-                CGTimmovableprop = Double.valueOf(0);
+                CGTimmovableprop = (double) 0;
             } else {
                 int id4 = res.getIdentifier("taxCalcCGImmovPKR", "id", getPackageName());
                 tempTextView1 = (TextView) findViewById(id4);
@@ -622,7 +586,7 @@ public class GenerateSummary extends AppCompatActivity {
                     int id1 = res.getIdentifier("taxCalcImmovBelow1", "id", getPackageName());
                     tempRow = (TableRow) findViewById(id1);
                     tempRow.setVisibility(View.GONE);
-                    CGTimmovableprop0 = Double.valueOf(0);
+                    CGTimmovableprop0 = (double) 0;
                 } else {
                     CGTimmovableprop0 = getChildfromPos(2, 1).getChildComponent(0) * 0.1;
                     int id1 = res.getIdentifier("taxCalcImmovBelow1PKR", "id", getPackageName());
@@ -633,7 +597,7 @@ public class GenerateSummary extends AppCompatActivity {
                     int id1 = res.getIdentifier("taxCalcImmovBtw12", "id", getPackageName());
                     tempRow = (TableRow) findViewById(id1);
                     tempRow.setVisibility(View.GONE);
-                    CGTimmovableprop1 = Double.valueOf(0);
+                    CGTimmovableprop1 = (double) 0;
                 } else {
                     CGTimmovableprop1 = getChildfromPos(2, 1).getChildComponent(1) * 0.05;
                     int id1 = res.getIdentifier("taxCalcImmovBtw12PKR", "id", getPackageName());
@@ -644,7 +608,7 @@ public class GenerateSummary extends AppCompatActivity {
                     int id1 = res.getIdentifier("taxCalcImmovGreater2", "id", getPackageName());
                     tempRow = (TableRow) findViewById(id1);
                     tempRow.setVisibility(View.GONE);
-                    CGTimmovableprop2 = Double.valueOf(0);
+                    CGTimmovableprop2 = (double) 0;
                 } else {
                     CGTimmovableprop2 = getChildfromPos(2, 1).getChildComponent(2) * 0;
                     int id1 = res.getIdentifier("taxCalcImmovGreater2PKR", "id", getPackageName());
@@ -657,6 +621,223 @@ public class GenerateSummary extends AppCompatActivity {
                 tempTextView1 = (TextView) findViewById(id1);
                 tempTextView1.setText(formatter.format(CGTimmovableprop));
             }
+        }
+
+        Double OtherTax, OtherDividendReg, OtherDividendPri, OtherProfitonDebt, OtherPrizeBonds, OtherQuiz, OtherBonus;
+
+        if (groupSumTaxable.get(3).intValue() == 0) {
+            int id1 = res.getIdentifier("dividerhead3", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcOtherSources", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcOtherSourcesTax", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcOtherSourcesDividend", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcOtherSourcesPPDividend", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcOtherSourcesProfitonDebt", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcOtherSourcesPrizeBonds", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcOtherSourcesQuiz", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcOtherSourcesBonus", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            OtherTax = (double) 0;
+        } else {
+            int id4 = res.getIdentifier("taxCalcOtherSourcesPKR", "id", getPackageName());
+            tempTextView1 = (TextView) findViewById(id4);
+            tempTextView1.setText(formatter.format(groupSumTaxable.get(3)));
+            if (getChildfromPos(3, 0).getComponentsSum().intValue() == 0) {
+                int id1 = res.getIdentifier("taxCalcOtherSourcesDividend", "id", getPackageName());
+                tempRow = (TableRow) findViewById(id1);
+                tempRow.setVisibility(View.GONE);
+                id1 = res.getIdentifier("taxCalcOtherSourcesPPDividend", "id", getPackageName());
+                tempRow = (TableRow) findViewById(id1);
+                tempRow.setVisibility(View.GONE);
+                OtherDividendReg = (double) 0;
+                OtherDividendPri = (double) 0;
+            } else {
+                if (getChildfromPos(3, 0).getChildComponent(0).intValue() == 0) {
+                    int id1 = res.getIdentifier("taxCalcOtherSourcesDividend", "id", getPackageName());
+                    tempRow = (TableRow) findViewById(id1);
+                    tempRow.setVisibility(View.GONE);
+                    OtherDividendReg = (double) 0;
+                } else {
+                    OtherDividendReg = getChildfromPos(3, 0).getChildComponent(0) * 0.1;
+                    int id1 = res.getIdentifier("taxCalcOtherSourcesDividendPKR", "id", getPackageName());
+                    tempTextView1 = (TextView) findViewById(id1);
+                    tempTextView1.setText(formatter.format(OtherDividendReg));
+                }
+                if (getChildfromPos(3, 0).getChildComponent(1).intValue() == 0) {
+                    int id1 = res.getIdentifier("taxCalcOtherSourcesPPDividend", "id", getPackageName());
+                    tempRow = (TableRow) findViewById(id1);
+                    tempRow.setVisibility(View.GONE);
+                    OtherDividendPri = (double) 0;
+                } else {
+                    OtherDividendPri = getChildfromPos(3, 0).getChildComponent(1) * 0.075;
+                    int id1 = res.getIdentifier("taxCalcOtherSourcesPPDividendPKR", "id", getPackageName());
+                    tempTextView1 = (TextView) findViewById(id1);
+                    tempTextView1.setText(formatter.format(OtherDividendPri));
+                }
+            }
+
+
+            if (getChildfromPos(3, 1).getComponentsSum().intValue() == 0) {
+                int id1 = res.getIdentifier("taxCalcOtherSourcesProfitonDebt", "id", getPackageName());
+                tempRow = (TableRow) findViewById(id1);
+                tempRow.setVisibility(View.GONE);
+                OtherProfitonDebt = (double) 0;
+            } else {
+                OtherProfitonDebt = getChildfromPos(3, 1).getChildComponent(0) * 0.1;
+                int id1 = res.getIdentifier("taxCalcOtherSourcesProfitonDebtPKR", "id", getPackageName());
+                tempTextView1 = (TextView) findViewById(id1);
+                tempTextView1.setText(formatter.format(OtherProfitonDebt));
+            }
+
+            if (getChildfromPos(3, 2).getComponentsSum().intValue() == 0) {
+                int id1 = res.getIdentifier("taxCalcOtherSourcesPrizeBonds", "id", getPackageName());
+                tempRow = (TableRow) findViewById(id1);
+                tempRow.setVisibility(View.GONE);
+                id1 = res.getIdentifier("taxCalcOtherSourcesQuiz", "id", getPackageName());
+                tempRow = (TableRow) findViewById(id1);
+                tempRow.setVisibility(View.GONE);
+                OtherPrizeBonds = (double) 0;
+                OtherQuiz = (double) 0;
+            } else {
+                if (getChildfromPos(3, 2).getChildComponent(0).intValue() == 0) {
+                    int id1 = res.getIdentifier("taxCalcOtherSourcesPrizeBonds", "id", getPackageName());
+                    tempRow = (TableRow) findViewById(id1);
+                    tempRow.setVisibility(View.GONE);
+                    OtherPrizeBonds = (double) 0;
+                } else {
+                    OtherPrizeBonds = getChildfromPos(3, 2).getChildComponent(0) * 0.15;
+                    int id1 = res.getIdentifier("taxCalcOtherSourcesPrizeBondsPKR", "id", getPackageName());
+                    tempTextView1 = (TextView) findViewById(id1);
+                    tempTextView1.setText(formatter.format(OtherPrizeBonds));
+                }
+                if (getChildfromPos(3, 2).getChildComponent(1).intValue() == 0) {
+                    int id1 = res.getIdentifier("taxCalcOtherSourcesQuiz", "id", getPackageName());
+                    tempRow = (TableRow) findViewById(id1);
+                    tempRow.setVisibility(View.GONE);
+                    OtherQuiz = (double) 0;
+                } else {
+                    OtherQuiz = getChildfromPos(3, 2).getChildComponent(1) * 0.2;
+                    int id1 = res.getIdentifier("taxCalcOtherSourcesQuizPKR", "id", getPackageName());
+                    tempTextView1 = (TextView) findViewById(id1);
+                    tempTextView1.setText(formatter.format(OtherQuiz));
+                }
+            }
+
+            if (getChildfromPos(3, 3).getComponentsSum().intValue() == 0) {
+                int id1 = res.getIdentifier("taxCalcOtherSourcesBonus", "id", getPackageName());
+                tempRow = (TableRow) findViewById(id1);
+                tempRow.setVisibility(View.GONE);
+                OtherBonus = (double) 0;
+            } else {
+                OtherBonus = getChildfromPos(3, 3).getChildComponent(0) * 0.05;
+                int id1 = res.getIdentifier("taxCalcOtherSourcesBonusPKR", "id", getPackageName());
+                tempTextView1 = (TextView) findViewById(id1);
+                tempTextView1.setText(formatter.format(OtherBonus));
+            }
+            OtherTax = OtherDividendReg + OtherDividendPri + OtherProfitonDebt + OtherPrizeBonds + OtherQuiz + OtherBonus;
+            id4 = res.getIdentifier("taxCalcOtherSourcesTaxPKR", "id", getPackageName());
+            tempTextView1 = (TextView) findViewById(id4);
+            tempTextView1.setText(formatter.format(OtherTax));
+        }
+
+        Double TotalAdvance, SalaryAdvance, RentalAdvance, CGTAdvance, SourcesAdvance, RemainingAdvance;
+        SalaryAdvance = getChildfromPos(6, 0).getComponentsSum();
+        RentalAdvance = getChildfromPos(6, 1).getComponentsSum();
+        RemainingAdvance = (double) 0;
+        for (int i = 2; i < eGroup.get(6).getChildCount(); i++) {
+            RemainingAdvance = RemainingAdvance + getChildfromPos(6, i).getComponentsSum();
+        }
+        CGTAdvance = CGTimmovableprop + CGTsecurities;
+        SourcesAdvance = OtherTax;
+        TotalAdvance = SalaryAdvance + RentalAdvance + RemainingAdvance + CGTAdvance + SourcesAdvance;
+
+        List<Double> listAdvance = new ArrayList<>();
+        listAdvance.add(SalaryAdvance);
+        listAdvance.add(RentalAdvance);
+        listAdvance.add(CGTAdvance);
+        listAdvance.add(SourcesAdvance);
+        listAdvance.add(RemainingAdvance);
+
+        if (TotalAdvance.intValue() == 0) {
+            int id1 = res.getIdentifier("dividerhead4", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcAdvanceTax", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcAdvanceTax0", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcAdvanceTax1", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcAdvanceTax2", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcAdvanceTax3", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+            id1 = res.getIdentifier("taxCalcAdvanceTax4", "id", getPackageName());
+            tempRow = (TableRow) findViewById(id1);
+            tempRow.setVisibility(View.GONE);
+        } else {
+            int id1 = res.getIdentifier("taxCalcAdvanceTaxPKR", "id", getPackageName());
+            tempTextView1 = (TextView) findViewById(id1);
+            tempTextView1.setText(formatter.format(TotalAdvance));
+            for (int i = 0; i < 5; i++) {
+                if (listAdvance.get(i).intValue() == 0) {
+                    int id20 = res.getIdentifier("taxCalcAdvanceTax" + i, "id", getPackageName());
+                    tempRow = (TableRow) findViewById(id20);
+                    tempRow.setVisibility(View.GONE);
+                } else {
+                    int id20 = res.getIdentifier("taxCalcAdvanceTax" + i + "PKR", "id", getPackageName());
+                    tempTextView1 = (TextView) findViewById(id20);
+                    tempTextView1.setText(formatter.format(listAdvance.get(i)));
+                }
+            }
+        }
+
+        Double TOTALINCOMEFINAL = groupSumTaxable.get(0) + groupSumTaxable.get(1) + groupSumTaxable.get(2) + groupSumTaxable.get(3) + groupSumExempt.get(0);
+        Double TOTALTAXLIABILITY = netTaxonSalary + rentalTax + CGTimmovableprop + CGTsecurities + OtherTax;
+        Double TOTALTAXADVANCE = TotalAdvance;
+        Double NETTAXPAYABLE = TOTALTAXLIABILITY - TOTALTAXADVANCE;
+
+        int id20 = res.getIdentifier("taxCalcTOTALINCOMEPKR", "id", getPackageName());
+        tempTextView1 = (TextView) findViewById(id20);
+        tempTextView1.setText(formatter.format(TOTALINCOMEFINAL));
+        id20 = res.getIdentifier("taxCalcTOTALTAXLIABPKR", "id", getPackageName());
+        tempTextView1 = (TextView) findViewById(id20);
+        tempTextView1.setText(formatter.format(TOTALTAXLIABILITY));
+        id20 = res.getIdentifier("taxCalcTOTALTAXADVANCEPKR", "id", getPackageName());
+        tempTextView1 = (TextView) findViewById(id20);
+        tempTextView1.setText(formatter.format(TOTALTAXADVANCE));
+        if (NETTAXPAYABLE < 0) {
+            DecimalFormat formatter1 = new DecimalFormat("#,###");
+            formatter1.setNegativePrefix("(");
+            formatter1.setNegativeSuffix(")");
+            id20 = res.getIdentifier("taxCalcTOTALTAXPAYABLEPKR", "id", getPackageName());
+            tempTextView1 = (TextView) findViewById(id20);
+            tempTextView1.setText(formatter1.format(NETTAXPAYABLE));
+        } else {
+            id20 = res.getIdentifier("taxCalcTOTALTAXPAYABLEPKR", "id", getPackageName());
+            tempTextView1 = (TextView) findViewById(id20);
+            tempTextView1.setText(formatter.format(NETTAXPAYABLE));
         }
     }
 

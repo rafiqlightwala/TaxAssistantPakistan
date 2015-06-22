@@ -205,14 +205,14 @@ public class CompleteWorking extends AppCompatActivity implements Serializable {
     public ArrayList<Group> SetStandardGroups() {
         String group_names[] = {"INCOME FROM SALARY", "INCOME FROM RENT", "CAPITAL GAINS", "INCOME FROM OTHER SOURCES", "DEDUCTIBLE ALLOWANCES", "TAX REDUCTIONS & CREDITS", "ADVANCE TAX (ADJUSTABLE)"};
 
-        ArrayList<Group> list = new ArrayList<Group>();
+        ArrayList<Group> list = new ArrayList<>();
         ArrayList<Child> ch_list;
 
         for (String group_name : group_names) {
             Group gru = new Group();
             gru.setName(group_name);
-            ch_list = new ArrayList<Child>();
-            Child child1, child2, child3, child4, child5, child6, child7, child8, child9, child10;
+            ch_list = new ArrayList<>();
+            Child child1, child2, child3, child4, child5, child6, child7, child8, child9, child10, child11;
             switch (group_name) {
                 case "INCOME FROM SALARY":
                     child1 = new Child();
@@ -284,6 +284,9 @@ public class CompleteWorking extends AppCompatActivity implements Serializable {
                     child1 = new Child();
                     child1.setName("TAX ON SALARY ALREADY DEDUCTED BY EMPLOYER");
                     ch_list.add(child1);
+                    child11 = new Child();
+                    child11.setName("TAX PAID IN ADVANCE ON RENTAL INCOME");
+                    ch_list.add(child11);
                     child8 = new Child();
                     child8.setName("ADVANCE TAX ON MOBILE OR PHONE BILLS");
                     ch_list.add(child8);
