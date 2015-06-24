@@ -1,16 +1,15 @@
 package com.blueinklabs.taxassistantpakistan;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -19,7 +18,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener, AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private Toolbar toolbar;
     ImageView iv1;
     public final static String myDeviceID = "BAF123BA0D33D61FAFC39E5EA2476219";
@@ -72,21 +71,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         */
 
 
-        //SetOnTouch
-        iv1 = (ImageView) findViewById(R.id.imageView);
-        iv1.setOnTouchListener(this);
-        iv1 = (ImageView) findViewById(R.id.imageView2);
-        iv1.setOnTouchListener(this);
-        iv1 = (ImageView) findViewById(R.id.imageView3);
-        iv1.setOnTouchListener(this);
-
         //Ads
-        AdView mAdView = (AdView) findViewById(R.id.adView_mainpage);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(MainActivity.myDeviceID)
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
-        mAdView.loadAd(adRequest);
+        if (!(BuildConfig.FLAVOR == "paidversion")) {
+            AdView mAdView = (AdView) findViewById(R.id.adView_mainpage);
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice(MainActivity.myDeviceID)
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .build();
+            mAdView.loadAd(adRequest);
+        }
+        if (BuildConfig.FLAVOR == "paidversion") {
+            TextView tempTextNote = (TextView) findViewById(R.id.main_page_text_bottom);
+            tempTextNote.setText("You are using PRO version which has no ads and saves data automatically!");
+            AdView mAdView = (AdView) findViewById(R.id.adView_mainpage);
+            mAdView.setVisibility(View.GONE);
+        }
 
     }
 
@@ -124,15 +123,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.imageView:
+            case R.id.simple_calculator_button:
+                Intent calculatorIntent = new Intent(this, SimpleTaxCalculator.class);
+                startActivity(calculatorIntent);
+                break;
+            case R.id.complete_tax_button:
                 Intent salaryIntent = new Intent(this, CompleteWorking.class);
                 startActivity(salaryIntent);
-                break;
-            case R.id.imageView2:
-                Toast.makeText(this, "OtherIncome", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.imageView3:
-                Toast.makeText(this, "This feature will be implemented in the future!", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Toast.makeText(this, "Shouldn't Happen", Toast.LENGTH_LONG).show();
@@ -142,22 +139,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        iv1 = (ImageView) v;
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                iv1.setColorFilter(Color.argb(60, 0, 0, 0));
-                return true; // if you want to handle the touch event
-            case MotionEvent.ACTION_UP:
-                iv1.clearColorFilter(); // White Tintt
-                v.callOnClick();
-                return true; // if you want to handle the touch event
-        }
-
-        return false;
     }
 }
 

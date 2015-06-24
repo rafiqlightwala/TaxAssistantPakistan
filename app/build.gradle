@@ -1,11 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config1 {
+            keyAlias 'RafiqAndroidKey'
+            keyPassword 'Kazedc!59'
+            storeFile file('C:/Users/Dell/Desktop/keys/rafiqkeys.jks')
+            storePassword 'Kazedc!59'
+        }
+    }
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
+    productFlavors {
+        freeversion {
+            applicationId = "com.blueinklabs.taxassistantpakistan.free"
+        }
 
+        paidversion {
+            applicationId = "com.blueinklabs.taxassistantpakistan.paid"
+        }
+    }
     defaultConfig {
-        applicationId "com.blueinklabs.taxassistantpakistan"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -13,17 +28,18 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            signingConfig signingConfigs.config1
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.android.support:cardview-v7:22.1.1'
     compile 'com.android.support:recyclerview-v7:22.1.1'
     compile 'com.google.android.gms:play-services:7.3.0'
-
 }

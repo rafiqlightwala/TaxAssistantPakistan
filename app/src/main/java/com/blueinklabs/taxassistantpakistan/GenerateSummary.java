@@ -28,7 +28,7 @@ public class GenerateSummary extends AppCompatActivity {
     private ArrayList<Double> groupSumTaxable, groupSumExempt;
     private Double taxableSalary;
     private Double grossTaxonSalary;
-    private Double netTaxonSalary;
+    private Double netTaxonSalary = (double) 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,12 +77,18 @@ public class GenerateSummary extends AppCompatActivity {
         */
 
         //Ads
-        AdView mAdView = (AdView) findViewById(R.id.adView_mainpage);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(MainActivity.myDeviceID)
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
-        mAdView.loadAd(adRequest);
+        if (!(BuildConfig.FLAVOR == "paidversion")) {
+            AdView mAdView = (AdView) findViewById(R.id.adView_summarypage);
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice(MainActivity.myDeviceID)
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .build();
+            mAdView.loadAd(adRequest);
+        }
+        if (BuildConfig.FLAVOR == "paidversion") {
+            AdView mAdView = (AdView) findViewById(R.id.adView_summarypage);
+            mAdView.setVisibility(View.GONE);
+        }
 
         eGroup = (ArrayList<Group>) getIntent().getSerializableExtra("expAdapts");
         runSummaryRoutine();

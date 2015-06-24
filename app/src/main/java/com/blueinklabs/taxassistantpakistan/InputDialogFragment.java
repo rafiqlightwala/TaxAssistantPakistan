@@ -2,7 +2,9 @@ package com.blueinklabs.taxassistantpakistan;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -23,6 +25,9 @@ public class InputDialogFragment extends DialogFragment {
     private View insideFragView;
     int gPosition;
     int cPosition;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
+    private Boolean isPaid = (BuildConfig.FLAVOR == "paidversion");
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -30,7 +35,8 @@ public class InputDialogFragment extends DialogFragment {
         gPosition = mArgs.getInt("gPosition");
         cPosition = mArgs.getInt("cPosition");
         ch1 = ((CompleteWorking) getActivity()).getChildfromPos(gPosition, cPosition);
-
+        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -472,6 +478,7 @@ public class InputDialogFragment extends DialogFragment {
                                 ch1.addChildPeriod(i, Boolean.FALSE);
                                 tempBool = Boolean.FALSE;
                             }
+                            putPreferenceBoolean(gPosition, cPosition, i, tempBool);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -482,6 +489,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     case 1:
@@ -503,6 +511,7 @@ public class InputDialogFragment extends DialogFragment {
                                 ch1.addChildPeriod(i, Boolean.FALSE);
                                 tempBool = Boolean.FALSE;
                             }
+                            putPreferenceBoolean(gPosition, cPosition, i, tempBool);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -513,6 +522,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     case 2:
@@ -534,6 +544,7 @@ public class InputDialogFragment extends DialogFragment {
                                 ch1.addChildPeriod(i, Boolean.FALSE);
                                 tempBool = Boolean.FALSE;
                             }
+                            putPreferenceBoolean(gPosition, cPosition, i, tempBool);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -544,6 +555,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     case 3:
@@ -555,6 +567,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -562,6 +575,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                 }
@@ -587,6 +601,7 @@ public class InputDialogFragment extends DialogFragment {
                                 ch1.addChildPeriod(i, Boolean.FALSE);
                                 tempBool = Boolean.FALSE;
                             }
+                            putPreferenceBoolean(gPosition, cPosition, i, tempBool);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -597,6 +612,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     case 1:
@@ -618,6 +634,7 @@ public class InputDialogFragment extends DialogFragment {
                                 ch1.addChildPeriod(i, Boolean.FALSE);
                                 tempBool = Boolean.FALSE;
                             }
+                            putPreferenceBoolean(gPosition, cPosition, i, tempBool);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -628,6 +645,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                 }
@@ -643,6 +661,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -650,6 +669,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.capital_gains_securities;
@@ -662,6 +682,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -669,6 +690,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.capital_gains_immovable;
@@ -685,6 +707,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -692,6 +715,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.dividend;
@@ -704,6 +728,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -711,6 +736,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.profit_on_debt;
@@ -723,6 +749,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -730,6 +757,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.prize_bonds;
@@ -742,6 +770,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -749,6 +778,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.bonus_shares;
@@ -766,6 +796,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -773,6 +804,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.zakat;
@@ -785,6 +817,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -792,6 +825,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.donations;
@@ -808,6 +842,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -815,6 +850,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.new_shares;
@@ -827,6 +863,7 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < inputID.length; i++) {
                             Double tempDouble;
                             ch1.addChildPeriod(i, Boolean.FALSE);
+                            putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             if (inputTextNum.get(i).getText().toString().equals("")) {
                                 tempDouble = Double.valueOf(0);
                             } else {
@@ -834,6 +871,7 @@ public class InputDialogFragment extends DialogFragment {
                                 tempDouble = tempDoub;
                             }
                             ch1.addChildComponent(i, tempDouble);
+                            putPreferenceValues(gPosition, cPosition, i, tempDouble);
                         }
                         break;
                     //return R.layout.pension_funds;
@@ -846,8 +884,10 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < spinnerID.length; i++) {
                             if (periodSelect.get(i).getSelectedItem().toString().equals("Yes")) {
                                 ch1.addChildPeriod(i, Boolean.TRUE);
+                                putPreferenceBoolean(gPosition, cPosition, i, Boolean.TRUE);
                             } else {
                                 ch1.addChildPeriod(i, Boolean.FALSE);
+                                putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             }
                         }
                         break;
@@ -861,8 +901,10 @@ public class InputDialogFragment extends DialogFragment {
                         for (int i = 0; i < spinnerID.length; i++) {
                             if (periodSelect.get(i).getSelectedItem().toString().equals("Yes")) {
                                 ch1.addChildPeriod(i, Boolean.TRUE);
+                                putPreferenceBoolean(gPosition, cPosition, i, Boolean.TRUE);
                             } else {
                                 ch1.addChildPeriod(i, Boolean.FALSE);
+                                putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                             }
                         }
                         break;
@@ -877,6 +919,7 @@ public class InputDialogFragment extends DialogFragment {
                 for (int i = 0; i < inputID.length; i++) {
                     Double tempDouble;
                     ch1.addChildPeriod(i, Boolean.FALSE);
+                    putPreferenceBoolean(gPosition, cPosition, i, Boolean.FALSE);
                     if (inputTextNum.get(i).getText().toString().equals("")) {
                         tempDouble = Double.valueOf(0);
                     } else {
@@ -884,6 +927,7 @@ public class InputDialogFragment extends DialogFragment {
                         tempDouble = tempDoub;
                     }
                     ch1.addChildComponent(i, tempDouble);
+                    putPreferenceValues(gPosition, cPosition, i, tempDouble);
                 }
                 break;
             //return R.layout.generic_one_layout;
@@ -896,5 +940,21 @@ public class InputDialogFragment extends DialogFragment {
         super.onStart();
         ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
         ((AlertDialog) getDialog()).getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED);
+    }
+
+    public void putPreferenceValues(int i, int j, int k, Double value) {
+        if (isPaid) {
+            String tempString = "values" + i + j + k;
+            editor.putLong(tempString, Double.doubleToRawLongBits(value));
+            editor.commit();
+        }
+    }
+
+    public void putPreferenceBoolean(int i, int j, int k, Boolean bool) {
+        if (isPaid) {
+            String tempString = "boolean" + i + j + k;
+            editor.putBoolean(tempString, bool);
+            editor.commit();
+        }
     }
 }

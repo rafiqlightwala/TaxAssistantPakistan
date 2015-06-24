@@ -43,6 +43,14 @@
                 android:value="com.blueinklabs.taxassistantpakistan.MainActivity"/>
         </activity>
         <activity
+            android:name="com.blueinklabs.taxassistantpakistan.SimpleTaxCalculator"
+            android:label="@string/tax_calculator_title"
+            android:parentActivityName="com.blueinklabs.taxassistantpakistan.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.blueinklabs.taxassistantpakistan.MainActivity" />
+        </activity>
+        <activity
             android:name=".CompleteWorking"
             android:label="@string/complete_working"
             android:parentActivityName="com.blueinklabs.taxassistantpakistan.MainActivity">

@@ -59,7 +59,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="6dp"
         android:layout_marginTop="6dp"
-        android:layout_above="@+id/adView_salarypage"
+        android:layout_above="@+id/adView_listview_page"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="12dp"
         android:layout_marginLeft="12dp"
@@ -67,7 +67,7 @@
         android:onClick="generateSummary" />
 
     <com.google.android.gms.ads.AdView
-        android:id="@+id/adView_salarypage"
+        android:id="@+id/adView_listview_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
