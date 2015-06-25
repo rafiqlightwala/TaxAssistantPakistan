@@ -1,6 +1,7 @@
 package com.blueinklabs.taxassistantpakistan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -79,8 +80,12 @@ public class SimpleTaxCalculator extends AppCompatActivity implements View.OnCli
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            // create an Intent to take you over to a new DetailActivity
-            return true;
+            Intent detailIntent = new Intent(this, AboutPage.class);
+
+            // TODO: add any other data you'd like as Extras
+
+            // start the next Activity using your prepared Intent
+            startActivity(detailIntent);
         }
 
         return super.onOptionsItemSelected(item);

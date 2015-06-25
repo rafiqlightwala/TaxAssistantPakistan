@@ -105,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            Toast.makeText(this, "Er", Toast.LENGTH_LONG).show();
             // create an Intent to take you over to a new DetailActivity
             Intent detailIntent = new Intent(this, AboutPage.class);
 

@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -856,7 +855,6 @@ public class GenerateSummary extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            Toast.makeText(this, "Er", Toast.LENGTH_LONG).show();
             // create an Intent to take you over to a new DetailActivity
             Intent detailIntent = new Intent(this, AboutPage.class);
 
